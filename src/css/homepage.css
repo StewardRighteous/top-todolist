@@ -1,0 +1,48 @@
+body{
+    display: grid;
+    grid-template-rows: 3rem 1fr;
+    grid-template-columns: 20rem 1fr;
+    grid-template-areas: 
+        "header header"
+        "nav content";
+    gap: 1rem;
+    min-height: 95vh;
+}
+
+header{
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+header .header-settings{
+    display: flex;
+    gap: 2rem;
+}
+
+nav{
+    grid-area: nav;
+    padding: 1rem;
+    display: grid;
+    grid-template-rows: 3rem 4rem 1fr;
+    gap: 1rem;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-around;
+}
+
+nav ul li{
+    list-style: none;
+    font-size: x-large;
+}
+
+
+#content{
+    grid-area: content;
+}
