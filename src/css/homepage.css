@@ -72,6 +72,24 @@ nav .list-dropdown button{
     align-self: center;
 }
 
+nav .projects{
+    display: grid;
+    grid-template-rows: 3rem;
+}
+
+nav .projects .project-options{
+    display: grid;
+    grid-template-columns: 0.2fr 1fr 0.3fr;
+    align-items: center;
+}
+
+nav .projects .project-options button{
+    border: 0;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+}
+
 #content{
     grid-area: content;
 }
