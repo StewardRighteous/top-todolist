@@ -13,8 +13,13 @@ function createListManager() {
         }
         return projectTitles;
     }
+    // Adds project to the list of projects
+    function addToProject(nameOfProject) {
+        listOfProjects.addProject(nameOfProject);
+    }
     return {
-        getAllProjectTitles
+        getAllProjectTitles,
+        addToProject
     }
 }
 

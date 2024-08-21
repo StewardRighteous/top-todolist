@@ -4,7 +4,7 @@ let instance;
 
 // One list that contains all projects and tasks for the whole app
 export default class List {
-    projects = [new Project("default")];
+    _projects = [new Project("default")];
 
     constructor() {
         if (instance) {
@@ -14,14 +14,14 @@ export default class List {
     }
 
     get allProjects() {
-        return this.projects;
+        return this._projects;
     }
 
-    addProject({ projectName }) {
-        this.projects.push(new Project(projectName));
+    addProject(projectName) {
+        this._projects.push(new Project(projectName));
     }
 
-    deleteProject({ projectName }) {
-        this.projects.filter(project => (project.projectName != projectName));
+    deleteProject(projectName) {
+        this._projects.filter(project => (project.projectName != projectName));
     }
 }

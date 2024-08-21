@@ -1,4 +1,4 @@
-
+import listManager from "../manager/listManager.js";
 
 export default function addNewListDialogBox() {
     // show add new list dialog when clicked on it
@@ -13,6 +13,7 @@ export default function addNewListDialogBox() {
     enterProjectNameLabel.for = "new-project";
     const projectNameInput = document.createElement("input");
     projectNameInput.type = "text";
+    projectNameInput.minLength = 3;
     projectNameInput.maxLength = 20;
     projectNameInput.id = "new-project";
     const addProjectButton = document.createElement("button");
@@ -31,6 +32,8 @@ export default function addNewListDialogBox() {
     });
 
     addProjectButton.addEventListener("click", ()=>{
-
+        let projectName = projectNameInput.value;
+        listManager.addToProject(projectName);
+        newProjectCreationDialog.close();
     });
 }
