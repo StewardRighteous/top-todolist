@@ -90,6 +90,32 @@ nav .projects .project-options button{
     height: 30px;
 }
 
+nav dialog[open]{
+    margin: auto;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+}
+
+nav dialog[open] label{
+    font-size: large;
+}
+
+nav dialog[open] .buttons{
+    display: flex;
+    gap: 8px;
+}
+
+nav dialog[open] .buttons button{
+    text-transform: uppercase;
+    width: 5rem;
+}
+
+nav dialog[open] .buttons button:first-child{
+    background-color: rgb(30, 78, 30);
+    color: white;
+}
+
 #content{
     grid-area: content;
 }
