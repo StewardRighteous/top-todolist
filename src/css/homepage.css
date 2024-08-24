@@ -1,15 +1,40 @@
-body{
+:root {
+    color-scheme: light dark;
+
+    --default-background-color: light-dark(#ffffff, #121212);
+    --text-color: light-dark(#000000, #ffffff);
+
+    --primary-color: light-dark(#6482AD, #021526);
+    --primary-color-2: light-dark(#7FA1C3, #03346E);
+    --secondary-color: light-dark(#E2DAD6, #6EACDA);
+    --secondary-color-2: light-dark(#F5EDED, #E2E2B6);
+}
+
+::backdrop{
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+.light {
+    color-scheme: light;
+}
+
+.dark {
+    color-scheme: dark;
+}
+
+body {
     display: grid;
     grid-template-rows: 4rem 1fr;
     grid-template-columns: 15rem 1fr;
-    grid-template-areas: 
+    grid-template-areas:
         "header header"
         "nav content";
     gap: 1rem;
     min-height: 95vh;
+    background-color: var(--default-background-color);
 }
 
-header{
+header {
     grid-area: header;
     display: flex;
     justify-content: space-between;
@@ -17,12 +42,13 @@ header{
     padding: 2rem;
 }
 
-header .header-settings{
+header .header-settings {
     display: flex;
+    flex-direction: row-reverse;
     gap: 2rem;
 }
 
-nav{
+nav {
     grid-area: nav;
     padding: 1rem;
     display: grid;
@@ -30,92 +56,104 @@ nav{
     gap: 1rem;
 }
 
-nav .create-task button{
+nav .create-task button {
     border-radius: 1rem;
     padding: 0.5rem 2rem;
     width: 100%;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-size: large;
     text-transform: uppercase;
+    background-color: var(--primary-color);
+    color: var(--secondary-color-2);
 }
 
-nav .section-buttons{
+nav .section-buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-nav .section-buttons button{
+nav .section-buttons button {
     font-size: x-large;
     text-align: left;
     border: 0;
-    background-color: white;
+    background-color: var(--default-background-color);
 }
 
-nav .lists-section{
+nav .lists-section {
     display: grid;
     grid-template-rows: 3rem min-content 3rem;
 }
 
-nav .list-dropdown{
+nav .list-dropdown {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-nav .list-dropdown button{
+nav .list-dropdown button {
     border: 0;
-    background-color: white;
+    background-color: var(--default-background-color);
     margin-top: 3px;
 }
 
-.lists-section button{
+.lists-section button {
     justify-self: center;
     align-self: center;
 }
 
-nav .projects{
+nav .projects {
     display: grid;
     grid-template-rows: 3rem;
 }
 
-nav .projects .project-options{
+nav .projects .project-options {
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.3fr;
     align-items: center;
 }
 
-nav .projects .project-options button{
+nav .projects .project-options button {
     border: 0;
     background-color: white;
     width: 30px;
     height: 30px;
 }
 
-nav dialog[open]{
+button.add-new-list{
+    background-color: var(--primary-color);
+    font-size: medium;
+    width: 5rem;
+    color: white;
+}
+
+nav dialog[open] {
     margin: auto;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     gap: 0.5rem;
 }
 
-nav dialog[open] label{
+nav dialog[open] label {
     font-size: large;
 }
 
-nav dialog[open] .buttons{
+nav dialog[open] .buttons {
     display: flex;
     gap: 8px;
 }
 
-nav dialog[open] .buttons button{
+nav dialog[open] .buttons button {
     text-transform: uppercase;
     width: 5rem;
 }
 
-nav dialog[open] .buttons button:first-child{
+nav dialog[open] .buttons button:first-child {
     background-color: rgb(30, 78, 30);
     color: white;
 }
 
-#content{
+#content {
     grid-area: content;
 }
