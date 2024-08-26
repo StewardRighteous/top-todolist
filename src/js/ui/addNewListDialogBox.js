@@ -1,7 +1,9 @@
-import listManager from "../manager/listManager.js";
+// Shows a list dialog box when clicked on add list button in Navigation Pane
+
+import {listDetailsManager, Observer} from "../manager/barrel.js";
 
 export default function addNewListDialogBox() {
-    // show add new list dialog when clicked on it
+    // getting navigation pane button
     const navigationPane = document.querySelector("nav");
     const listSectionContainer = navigationPane.querySelector(".lists-section");
     const addNewProjectButton = listSectionContainer.querySelector("button.add-new-list");
@@ -30,21 +32,27 @@ export default function addNewListDialogBox() {
     newProjectCreationDialog.append(enterProjectNameLabel, projectNameInput, buttonContainer);
     navigationPane.append(newProjectCreationDialog);
 
+    // opens the dialog box when clicked on add list button
     addNewProjectButton.addEventListener("click", () => {
         newProjectCreationDialog.showModal();
     });
 
+    // closes dialog box without creating any new list (project) 
     declineButton.addEventListener("click", () => {
         newProjectCreationDialog.close();
     });
 
+    // creates a new project and add it to the list
     addProjectButton.addEventListener("click", ()=>{
-        if(projectNameInput.value.length <= 3){
+        // check for name to be atleast 3 characaters long
+        if(projectNameInput.value.length <= 2){
             alert("Please Enter Project name");
         }else{
             let projectName = projectNameInput.value;
-            listManager.addToProject(projectName);
+            listDetailsManager.addToProject(projectName);
             newProjectCreationDialog.close();
+            // Reloads the project list in NAV with the added new project
+            Observer.notify();
         }
     });
 }
