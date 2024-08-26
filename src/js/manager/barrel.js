@@ -1,5 +1,5 @@
-import listDetailsManager from "./listDetailsManager";
-import listState from "./listStateManager";
-import Observer from "./observer";
+import listDetailsManager from "./list/listDetailsManager.js";
+import listState from "./list/listStateManager.js";
+import ListObserver from "./list/listObserver.js";
 
-export {listDetailsManager, listState, Observer};
+export {listDetailsManager, listState, ListObserver};

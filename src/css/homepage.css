@@ -1,3 +1,4 @@
+/* Default Themes */
 :root {
     color-scheme: light dark;
 
@@ -8,12 +9,6 @@
     --accent: light-dark(#443dff, #0600c2) ;
 }
 
-
-
-::backdrop {
-    background-color: rgb(0, 0, 0, 0.8);
-}
-
 .light {
     color-scheme: light;
 }
@@ -22,6 +17,11 @@
     color-scheme: dark;
 }
 
+::backdrop {
+    background-color: rgb(0, 0, 0, 0.8);
+}
+
+/* basic layout */
 body {
     display: grid;
     grid-template-rows: 4rem 1fr;
@@ -34,6 +34,7 @@ body {
     background-color: var(--background);
 }
 
+/* designing header */
 header {
     grid-area: header;
     display: flex;
@@ -48,6 +49,7 @@ header .header-settings {
     gap: 2rem;
 }
 
+/* designing navigation pane */
 nav {
     grid-area: nav;
     padding: 1rem;
@@ -116,11 +118,12 @@ nav .projects .project-options {
 
 nav .projects .project-options button {
     border: 0;
-    background-color: white;
+    background-color: var(--background);
     width: 30px;
     height: 30px;
 }
 
+/* add list button and its respective dialog box in navigation pane */
 button.add-new-list {
     background-color: var(--primary);
     font-size: medium;
@@ -154,6 +157,7 @@ nav dialog[open] .buttons button:first-child {
     color: white;
 }
 
+/* content area */
 #content {
     grid-area: content;
 }

@@ -1,6 +1,6 @@
 // Shows a list dialog box when clicked on add list button in Navigation Pane
 
-import {listDetailsManager, Observer} from "../manager/barrel.js";
+import {listDetailsManager, ListObserver} from "../manager/barrel.js";
 
 export default function addNewListDialogBox() {
     // getting navigation pane button
@@ -49,10 +49,10 @@ export default function addNewListDialogBox() {
             alert("Please Enter Project name");
         }else{
             let projectName = projectNameInput.value;
-            listDetailsManager.addToProject(projectName);
+            listDetailsManager.addToListOfProjects(projectName);
             newProjectCreationDialog.close();
             // Reloads the project list in NAV with the added new project
-            Observer.notify();
+            ListObserver.notify();
         }
     });
 }

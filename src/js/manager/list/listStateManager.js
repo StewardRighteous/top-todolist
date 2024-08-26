@@ -1,5 +1,5 @@
 // Singleton pattern that will create a list for overall app
-import {List, Project} from "../models/barrel.js";
+import {List, Project} from "../../models/barrel.js";
 
 let instance;
 let list = new List();
@@ -7,7 +7,7 @@ let list = new List();
 class ListStateManager{
     constructor(){
         if(instance){
-            throw new Error("You can only create on instance");
+            throw new Error("You can only create one instance");
         }
         instance = this;
     }

@@ -2,7 +2,7 @@
 
 // Trash icon for deleting option
 import deleteImage from "../../img/trash-2.svg";
-import {listDetailsManager, Observer} from "../manager/barrel.js";
+import {listDetailsManager, ListObserver} from "../manager/barrel.js";
 
 export default function showAllProjectsInNav() {
     // getting navigation pane
@@ -47,4 +47,4 @@ export default function showAllProjectsInNav() {
 }
 
 // Adding to observer so the function can be called anytime a new project is created in the list
-Observer.subscribe(showAllProjectsInNav);
+ListObserver.subscribe(showAllProjectsInNav);

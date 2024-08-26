@@ -1,17 +1,8 @@
 import Project from "./project.js";
 
-let instance;
-
-// One list that contains all projects and tasks for the whole app
+// Contains all the projects in the app
 export default class List {
     _projects = [new Project("default")];
-
-    constructor() {
-        if (instance) {
-            throw new Error("Only one instance can be created for list");
-        }
-        return this;
-    }
 
     get allProjects() {
         return this._projects;
@@ -22,6 +13,6 @@ export default class List {
     }
 
     deleteProject(projectName) {
-        this._projects.filter(project => (project.projectName != projectName));
+        this._projects = this._projects.filter(project => (project.projectName != projectName));
     }
 }

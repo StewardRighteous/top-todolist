@@ -1,4 +1,5 @@
-class Observable{
+// Observer pattern to reload parts of UI when list state changes
+class ListObservable{
     constructor(){
         this.observers = [];
     }
@@ -16,4 +17,4 @@ class Observable{
     }
 }
 
-export default new Observable();
+export default new ListObservable();

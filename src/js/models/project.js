@@ -1,3 +1,4 @@
+// Contains a list of Tasks related to each other
 export default class Project {
     _projectTitle;
 
