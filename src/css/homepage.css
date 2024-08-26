@@ -1,16 +1,16 @@
 :root {
     color-scheme: light dark;
 
-    --default-background-color: light-dark(#ffffff, #121212);
-    --text-color: light-dark(#000000, #ffffff);
-
-    --primary-color: light-dark(#6482AD, #021526);
-    --primary-color-2: light-dark(#7FA1C3, #03346E);
-    --secondary-color: light-dark(#E2DAD6, #6EACDA);
-    --secondary-color-2: light-dark(#F5EDED, #E2E2B6);
+    --text:light-dark(#050316, #ebe9fc) ;
+    --background: light-dark(#fbfbfe,#010104);
+    --primary:light-dark(#2f27ce,#3a31d8) ;
+    --secondary: light-dark(#dddbff, #020024) ;
+    --accent: light-dark(#443dff, #0600c2) ;
 }
 
-::backdrop{
+
+
+::backdrop {
     background-color: rgb(0, 0, 0, 0.8);
 }
 
@@ -31,7 +31,7 @@ body {
         "nav content";
     gap: 1rem;
     min-height: 95vh;
-    background-color: var(--default-background-color);
+    background-color: var(--background);
 }
 
 header {
@@ -64,8 +64,8 @@ nav .create-task button {
     letter-spacing: 1px;
     font-size: large;
     text-transform: uppercase;
-    background-color: var(--primary-color);
-    color: var(--secondary-color-2);
+    background-color: var(--primary);
+    color: white;
 }
 
 nav .section-buttons {
@@ -78,7 +78,7 @@ nav .section-buttons button {
     font-size: x-large;
     text-align: left;
     border: 0;
-    background-color: var(--default-background-color);
+    background-color: var(--background);
 }
 
 nav .lists-section {
@@ -94,7 +94,7 @@ nav .list-dropdown {
 
 nav .list-dropdown button {
     border: 0;
-    background-color: var(--default-background-color);
+    background-color: var(--background);
     margin-top: 3px;
 }
 
@@ -121,8 +121,8 @@ nav .projects .project-options button {
     height: 30px;
 }
 
-button.add-new-list{
-    background-color: var(--primary-color);
+button.add-new-list {
+    background-color: var(--primary);
     font-size: medium;
     width: 5rem;
     color: white;
