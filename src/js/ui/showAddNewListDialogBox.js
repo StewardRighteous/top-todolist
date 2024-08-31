@@ -2,7 +2,7 @@
 
 import {listDetailsManager, ListObserver} from "../manager/barrel.js";
 
-export default function addNewListDialogBox() {
+export default function showAddNewListDialogBox() {
     // getting navigation pane button
     const navigationPane = document.querySelector("nav");
     const listSectionContainer = navigationPane.querySelector(".lists-section");

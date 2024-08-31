@@ -1,5 +1,6 @@
 import showAllProjectsInNav from "./showAllProjectsInNav.js";
-import addNewListDialogBox from "./addNewListDialogBox.js";
+import showAddNewListDialogBox from "./showAddNewListDialogBox.js";
 import loadPageWithDarkOrLightMode from "./loadPageWithDarkOrLightMode.js";
+import showCreateNewTaskDialog from "./showCreateNewTaskDialog.js";
 
-export {showAllProjectsInNav, addNewListDialogBox, loadPageWithDarkOrLightMode};
+export {showAllProjectsInNav, showAddNewListDialogBox, loadPageWithDarkOrLightMode, showCreateNewTaskDialog};
