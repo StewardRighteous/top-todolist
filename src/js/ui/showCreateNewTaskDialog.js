@@ -49,12 +49,19 @@ export default function showCreateNewTaskDialog() {
     projectNameLabel.textContent = "Project Name";
     const projectListDropDown = document.createElement("select");
     projectListDropDown.id = "project-list";
-    for (let projectName of listDetailsManager.getAllProjectTitles()) {
-        const projectNameOption = document.createElement("option");
-        projectNameOption.value = projectName;
-        projectNameOption.text = projectName;
-        projectListDropDown.append(projectNameOption);
+    function addProjectsToProjectListDropdown(){
+        while(projectListDropDown.children.length != 0){
+            projectListDropDown.firstChild.remove();
+        }
+        for (let projectName of listDetailsManager.getAllProjectTitles()) {
+            const projectNameOption = document.createElement("option");
+            projectNameOption.value = projectName;
+            projectNameOption.text = projectName;
+            projectListDropDown.append(projectNameOption);
+        }
     }
+    addProjectsToProjectListDropdown();
+    ListObserver.subscribe(addProjectsToProjectListDropdown);
 
     // add task to project button
     const addTaskToProjectButton = document.createElement("button");
@@ -85,6 +92,3 @@ export default function showCreateNewTaskDialog() {
         addNewTaskDialog.close();
     });
 }
-
-// Dropdown list will be updated when everytime a new list is created
-ListObserver.subscribe(showCreateNewTaskDialog);

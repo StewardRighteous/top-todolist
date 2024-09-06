@@ -55,6 +55,7 @@ export default function showAddNewListDialogBox() {
             let projectName = projectNameInput.value;
             listDetailsManager.addToListOfProjects(projectName);
             newProjectCreationDialog.close();
+            projectNameInput.value = "";
             // Reloads the project list in NAV with the added new project
             ListObserver.notify();
         }
