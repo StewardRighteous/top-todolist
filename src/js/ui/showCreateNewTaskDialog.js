@@ -14,6 +14,7 @@ export default function showCreateNewTaskDialog() {
     addNewTaskHeading.textContent = "Add New Task";
     const cancelButton = document.createElement("button");
     cancelButton.textContent = "❌";
+    cancelButton.className = "cancel-dialog";
 
     // Task title
     const titleLabel = document.createElement("label");
@@ -39,7 +40,7 @@ export default function showCreateNewTaskDialog() {
 
     // repeat option
     const repeatLabel = document.createElement("label");
-    repeatLabel.textContent = "repeat";
+    repeatLabel.textContent = "Repeat (everyday)";
     const repeatInput = document.createElement("input");
     repeatInput.type = "checkbox";
 
@@ -58,10 +59,11 @@ export default function showCreateNewTaskDialog() {
     // add task to project button
     const addTaskToProjectButton = document.createElement("button");
     addTaskToProjectButton.textContent = "Add Task";
+    addTaskToProjectButton.className = "add-task-button";
 
     // adding to dialog box
     const addNewTaskDialogContainer = document.createElement("div");
-    addNewTaskDialogContainer.className = "add-new-task";
+    addNewTaskDialogContainer.className = "add-new-task-dialog";
     addNewTaskDialogContainer.append(addNewTaskHeading, cancelButton, titleLabel, titleInput,
         descriptionLabel, descriptionInput, dueDateLabel, dueDateInput, dueDateInput, repeatLabel,
         repeatInput, projectNameLabel, projectListDropDown, addTaskToProjectButton);

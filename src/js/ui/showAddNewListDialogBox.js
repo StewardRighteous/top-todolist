@@ -28,8 +28,12 @@ export default function showAddNewListDialogBox() {
     const declineButton = document.createElement("button");
     declineButton.textContent = "Cancel";
 
+    const addNewListContainer = document.createElement("div");
+    addNewListContainer.className = "add-new-list-dialog";
+
     buttonContainer.append(addProjectButton, declineButton);
-    newProjectCreationDialog.append(enterProjectNameLabel, projectNameInput, buttonContainer);
+    addNewListContainer.append(enterProjectNameLabel, projectNameInput, buttonContainer);
+    newProjectCreationDialog.appendChild(addNewListContainer);
     navigationPane.append(newProjectCreationDialog);
 
     // opens the dialog box when clicked on add list button

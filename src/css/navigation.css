@@ -80,28 +80,60 @@ button.add-new-list {
     color: white;
 }
 
-nav dialog[open] {
-    margin: auto;
+nav .add-new-list-dialog{
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     gap: 0.5rem;
 }
 
-nav dialog[open] label {
+nav .add-new-list-dialog label {
     font-size: large;
 }
 
-nav dialog[open] .buttons {
+nav .add-new-list-dialog .buttons {
     display: flex;
     gap: 8px;
 }
 
-nav dialog[open] .buttons button {
+nav .add-new-list-dialog .buttons button {
     text-transform: uppercase;
     width: 5rem;
 }
 
-nav dialog[open] .buttons button:first-child {
+nav .add-new-list-dialog .buttons button:first-child {
     background-color: rgb(30, 78, 30);
+    color: white;
+}
+
+/* Add new task dialog box */
+nav .add-new-task-dialog{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.7rem;
+    position: relative;
+}
+
+nav .add-new-task-dialog label{
+    font-size: larger;
+}
+
+nav .add-new-task-dialog h1{
+    grid-column: 1/-1;
+    text-align: center;
+    font-size: xx-large;
+}
+
+nav .add-new-task-dialog button.cancel-dialog{
+    position: absolute;
+    right: -1px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+nav .add-new-task-dialog button.add-task-button{
+    grid-column: 1/-1;
+    justify-self: center;
+    padding: 0px 8px;
+    background-color:  rgb(30, 78, 30);
     color: white;
 }
