@@ -80,6 +80,13 @@ export default function showCreateNewTaskDialog() {
     // button functions
     addTaskToProjectButton.addEventListener("click", () => {
         addNewTaskDialog.close();
+        listDetailsManager.addTaskToProject(projectListDropDown.value, 
+            titleInput.value, 
+            descriptionInput.value,
+            dueDateInput.value,
+            repeatInput.checked,
+            projectListDropDown.value
+        );
         titleInput.value = descriptionInput.value = dueDateInput.value = "";
         repeatInput.checked = false;
     });

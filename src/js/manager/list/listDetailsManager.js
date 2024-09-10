@@ -16,6 +16,11 @@ class createListDetailsManager {
     addToListOfProjects(nameOfProject) {
         List.getList().addProject(nameOfProject);
     }
+
+    // Adds task to the project in the list
+    addTaskToProject(projectName, title, description, time, repeat, project, starred) {
+        List.getList().allProjects.find(value => value == projectName).addTaskToProject(title, description, time, repeat, project);
+    }
 }
 
 export default new createListDetailsManager();
