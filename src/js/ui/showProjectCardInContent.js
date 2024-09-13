@@ -38,10 +38,14 @@ export default function showProjectCardInContent() {
         const taskContainer = document.createElement("div");
         taskContainer.className = "tasks-list";
 
-        function addTaskContentToProjectCard(){
-            if(taskContainer.children.length != 0){
+        function removeTasksFromTaskContainer(){
+            while(taskContainer.children.length != 0){
                 taskContainer.firstChild.remove();
             }
+        }
+
+        function addTaskContentToProjectCard(){
+            removeTasksFromTaskContainer(); // To avoid duplication
             for(let task of project.allTasks){
                 const completedCheckboxInput = document.createElement("input");
                 completedCheckboxInput.type = "checkbox";
