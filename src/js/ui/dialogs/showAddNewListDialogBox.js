@@ -1,6 +1,6 @@
 // Shows a list dialog box when clicked on add list button in Navigation Pane
 
-import {listDetailsManager, ListObserver} from "../manager/barrel.js";
+import {listDetailsManager, ListObserver} from "../../manager/barrel.js";
 
 export default function showAddNewListDialogBox() {
     // getting navigation pane button

@@ -1,4 +1,5 @@
 // Class that deals with parsing and adding data from the List to be used by others
+import Task from "../../models/task";
 import List from "./listStateManager"
 
 class createListDetailsManager {
@@ -18,8 +19,14 @@ class createListDetailsManager {
     }
 
     // Adds task to the project in the list
-    addTaskToProject(projectName, title, description, time, repeat, project, starred) {
-        List.getList().allProjects.find(value => value == projectName).addTaskToProject(title, description, time, repeat, project);
+    addTaskToProject(projectName, title, description, time, repeat, project) {
+        let indexOfProject = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
+        List.getList().allProjects[indexOfProject].addTaskToProject(title, description, time, repeat, project);
+    }
+
+    // returns projects with its tasks
+    getAllProjectsWithTasks(){
+        return List.getList().allProjects;
     }
 }
 

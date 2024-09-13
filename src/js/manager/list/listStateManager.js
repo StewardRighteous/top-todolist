@@ -19,6 +19,7 @@ class ListStateManager{
     getList(){
         return list;
     }
+
 }
 
 const listState = Object.freeze(new ListStateManager());

@@ -1,4 +1,4 @@
-import { listDetailsManager, ListObserver } from "../manager/barrel";
+import { listDetailsManager, ListObserver, TaskObserver } from "../../manager/barrel.js";
 
 // Showing create new dialog box on Create new Task button click
 export default function showCreateNewTaskDialog() {
@@ -79,16 +79,22 @@ export default function showCreateNewTaskDialog() {
 
     // button functions
     addTaskToProjectButton.addEventListener("click", () => {
-        addNewTaskDialog.close();
-        listDetailsManager.addTaskToProject(projectListDropDown.value, 
-            titleInput.value, 
-            descriptionInput.value,
-            dueDateInput.value,
-            repeatInput.checked,
-            projectListDropDown.value
-        );
-        titleInput.value = descriptionInput.value = dueDateInput.value = "";
-        repeatInput.checked = false;
+        if(titleInput.value.length < 3){
+            alert ("Task name should have atleat 3 letters");
+            titleInput.value = "";
+        }else{
+            listDetailsManager.addTaskToProject(projectListDropDown.value, 
+                titleInput.value, 
+                descriptionInput.value,
+                dueDateInput.value,
+                repeatInput.checked,
+                projectListDropDown.value
+            );
+            addNewTaskDialog.close();
+            titleInput.value = descriptionInput.value = dueDateInput.value = "";
+            repeatInput.checked = false;
+            TaskObserver.notify();
+        }
     });
 
     createTaskButton.addEventListener("click", () => {
