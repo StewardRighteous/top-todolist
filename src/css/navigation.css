@@ -15,7 +15,7 @@ nav .create-task button {
     letter-spacing: 1px;
     font-size: large;
     text-transform: uppercase;
-    background-color: var(--primary);
+    background-color: var(--accent);
     color: white;
 }
 

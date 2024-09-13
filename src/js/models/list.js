@@ -2,7 +2,7 @@ import Project from "./project.js";
 
 // Contains all the projects in the app
 export default class List {
-    _projects = [new Project("default")];
+    _projects = [new Project("Default")];
 
     get allProjects() {
         return this._projects;

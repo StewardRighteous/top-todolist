@@ -1,4 +1,46 @@
 /* content area */
 #content {
     grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-auto-rows: max-content;
+    gap: 1rem;
+}
+
+#content .project-card{
+    min-width: 15rem;
+    background-color: var(--primary);
+    border: 2px solid var(--text);
+    color: white;
+    height: fit-content;
+    border-radius: 1rem;
+    padding: 0rem 1rem;
+    position: relative;
+}
+
+#content .project-card h1{
+    display: inline;
+}
+
+#content .project-card button:nth-of-type(1){
+    position: absolute;
+    background-color: var(--primary);
+    border: none;
+    right: 4%;
+    top: 7%;
+}
+
+#content .project-card button:nth-of-type(2){
+    display: block;
+}
+
+#content .project-card .tasks-list{
+    display: grid;
+    grid-template-columns: 0.2fr 2fr;
+    column-gap: 0.5rem;
+    line-height: 1.5;
+}
+
+#content .project-card .tasks-list p{
+    font-size: 1.2rem;
 }
