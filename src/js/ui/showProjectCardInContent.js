@@ -2,7 +2,8 @@
 
 import settingsIconImage from "../../img/settings.svg";
 import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../manager/barrel";
-import {} from "date-fns"
+import trashIcon from "../../img/trash-2.svg";
+import starIcon from "../../img/star.svg";
 
 export default function showProjectCardInContent() {
     // getting content area
@@ -46,18 +47,23 @@ export default function showProjectCardInContent() {
                 settingsButton.appendChild(settingsIcon);
     
                 //tasks in that particular project
-                const taskContainer = document.createElement("div");
-                taskContainer.className = "tasks-list";
+                const taskListContainer = document.createElement("div");
+                taskListContainer.className = "tasks-list";
     
                 function removeTasksFromTaskContainer() {
-                    while (taskContainer.children.length != 0) {
-                        taskContainer.firstChild.remove();
+                    while (taskListContainer.children.length != 0) {
+                        taskListContainer.firstChild.remove();
                     }
                 }
-    
+                
+                // Each task options
                 function addTaskContentToProjectCard() {
                     removeTasksFromTaskContainer(); // To avoid duplication
                     for (let task of project.allTasks) {
+                        // task container with checkboxes[completed], name, due date, delete button and star button
+                        const taskContainer = document.createElement("div");
+                        taskContainer.className = "task";
+
                         const completedCheckboxInput = document.createElement("input");
                         completedCheckboxInput.type = "checkbox";
 
@@ -69,9 +75,20 @@ export default function showProjectCardInContent() {
 
                         const dueTime = document.createElement("p");
                         dueTime.textContent = task.dueTime;
+
+                        const starTaskButton = document.createElement("button");
+                        const starIconImage = document.createElement("img");
+                        starIconImage.src = starIcon;
+                        starTaskButton.appendChild(starIconImage);
+
+                        const taskDeleteButton = document.createElement("button");
+                        const deleteIconImage = document.createElement("img");
+                        deleteIconImage.src = trashIcon;
+                        taskDeleteButton.appendChild(deleteIconImage);
     
                         taskAndDateContainer.append(taskName, dueTime)
-                        taskContainer.append(completedCheckboxInput, taskAndDateContainer);
+                        taskContainer.append(completedCheckboxInput, taskAndDateContainer, starTaskButton, taskDeleteButton);
+                        taskListContainer.appendChild(taskContainer);
                     }
                 }
     
@@ -82,7 +99,7 @@ export default function showProjectCardInContent() {
                     projectTitle,
                     settingsButton,
                     addTaskButton,
-                    taskContainer
+                    taskListContainer
                 );
                 contentArea.appendChild(projectCard);
             }
