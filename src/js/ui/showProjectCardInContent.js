@@ -68,7 +68,7 @@ export default function showProjectCardInContent() {
                         taskName.textContent = task.title;
 
                         const dueTime = document.createElement("p");
-                        dueTime.textContent = task.taskTime;
+                        dueTime.textContent = task.dueTime;
     
                         taskAndDateContainer.append(taskName, dueTime)
                         taskContainer.append(completedCheckboxInput, taskAndDateContainer);
