@@ -39,6 +39,14 @@ class createListDetailsManager {
         let isShow = List.getList().allProjects[projectIndex].isShowProject;
         return isShow;
     }
+
+    isAllCardsHidden(){
+        let showProject = List.getList().allProjects.filter(project => project.isShowProject == true);
+        if(showProject.length == 0){
+            return true;
+        }
+        return false;
+    }
 }
 
 export default new createListDetailsManager();
