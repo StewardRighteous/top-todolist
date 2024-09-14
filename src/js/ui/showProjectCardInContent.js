@@ -2,6 +2,7 @@
 
 import settingsIconImage from "../../img/settings.svg";
 import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../manager/barrel";
+import {} from "date-fns"
 
 export default function showProjectCardInContent() {
     // getting content area
@@ -59,11 +60,18 @@ export default function showProjectCardInContent() {
                     for (let task of project.allTasks) {
                         const completedCheckboxInput = document.createElement("input");
                         completedCheckboxInput.type = "checkbox";
+
+                        const taskAndDateContainer = document.createElement("div");
+                        taskAndDateContainer.className = "task-name-date"
     
                         const taskName = document.createElement("p");
                         taskName.textContent = task.title;
+
+                        const dueTime = document.createElement("p");
+                        dueTime.textContent = task.taskTime;
     
-                        taskContainer.append(completedCheckboxInput, taskName);
+                        taskAndDateContainer.append(taskName, dueTime)
+                        taskContainer.append(completedCheckboxInput, taskAndDateContainer);
                     }
                 }
     

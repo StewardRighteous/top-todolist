@@ -36,7 +36,7 @@ export default function showCreateNewTaskDialog() {
     const dueDateLabel = document.createElement("label");
     dueDateLabel.textContent = "Due Date";
     const dueDateInput = document.createElement("input");
-    dueDateInput.type = "date";
+    dueDateInput.type = "datetime-local";
 
     // repeat option
     const repeatLabel = document.createElement("label");
@@ -103,5 +103,7 @@ export default function showCreateNewTaskDialog() {
 
     cancelButton.addEventListener("click", () => {
         addNewTaskDialog.close();
+        titleInput.value = descriptionInput.value = dueDateInput.value = "";
+        repeatInput.checked = false;
     });
 }
