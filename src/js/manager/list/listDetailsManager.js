@@ -28,6 +28,17 @@ class createListDetailsManager {
     getAllProjectsWithTasks(){
         return List.getList().allProjects;
     }
+
+    changeShowOrHideProjectCard(projectName, isShow){
+        let projectIndex = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
+        List.getList().allProjects[projectIndex].isShowProject = isShow;
+    }
+
+    getShowOrHideProjectCard(projectName){
+        let projectIndex = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
+        let isShow = List.getList().allProjects[projectIndex].isShowProject;
+        return isShow;
+    }
 }
 
 export default new createListDetailsManager();

@@ -2,7 +2,7 @@
 
 // Trash icon for deleting option
 import deleteImage from "../../img/trash-2.svg";
-import {listDetailsManager, ListObserver} from "../manager/barrel.js";
+import {listDetailsManager, ListObserver, ProjectObserver} from "../manager/barrel.js";
 
 export default function showAllProjectsInNav() {
     // getting navigation pane
@@ -20,15 +20,18 @@ export default function showAllProjectsInNav() {
     removeAllElementsFromProject();
 
     // creating project container that has show [checkbox], name [project name] and delete[button] options.
-    for (let project of listDetailsManager.getAllProjectTitles()) {
+    for (let projectTitle of listDetailsManager.getAllProjectTitles()) {
         const showProjectContainer = document.createElement("div");
         showProjectContainer.className = "project-options";
 
         const toggleShowProjectCheckbox = document.createElement("input");
         toggleShowProjectCheckbox.type = "checkbox";
+        if(listDetailsManager.getShowOrHideProjectCard(projectTitle)){
+            toggleShowProjectCheckbox.checked = true;
+        }
 
-        const projectTitle = document.createElement("p");
-        projectTitle.textContent = project;
+        const projectTitleParagraph = document.createElement("p");
+        projectTitleParagraph.textContent = projectTitle;
 
         const deleteProjectButton = document.createElement("button");
         const deleteIcon = document.createElement("img");
@@ -36,13 +39,19 @@ export default function showAllProjectsInNav() {
         deleteProjectButton.appendChild(deleteIcon);
 
         // not showing delete option to the default project
-        if (project == listDetailsManager.getAllProjectTitles().at(0)) {
-            showProjectContainer.append(toggleShowProjectCheckbox, projectTitle);
+        if (projectTitle == listDetailsManager.getAllProjectTitles().at(0)) {
+            showProjectContainer.append(toggleShowProjectCheckbox, projectTitleParagraph);
             projectList.appendChild(showProjectContainer);
         } else {
-            showProjectContainer.append(toggleShowProjectCheckbox, projectTitle, deleteProjectButton);
+            showProjectContainer.append(toggleShowProjectCheckbox, projectTitleParagraph, deleteProjectButton);
             projectList.appendChild(showProjectContainer);
         }
+
+        // Hiding and showing project card according to this checkbox
+        toggleShowProjectCheckbox.addEventListener("click", (e)=> {
+            listDetailsManager.changeShowOrHideProjectCard(projectTitle, toggleShowProjectCheckbox.checked);
+            ProjectObserver.notify();
+        });
     }
 }
 

@@ -4,7 +4,7 @@ import Task from "./task";
 export default class Project {
     _projectTitle;
     _tasks = [];
-    isShowProject = true;
+    _isShowProject = true;
 
     constructor(title) {
         this._projectTitle = title;
@@ -15,6 +15,14 @@ export default class Project {
     }
     set projectTitle(value) {
         this._projectTitle = value;
+    }
+
+    get isShowProject() {
+        return this._isShowProject;
+    }
+
+    set isShowProject(value){
+        this._isShowProject = value;
     }
 
     get allTasks() {
