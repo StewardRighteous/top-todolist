@@ -18,11 +18,11 @@
     position: relative;
 }
 
-#content .project-card h1{
+#content .project-card .project-head h1{
     display: inline;
 }
 
-#content .project-card button:nth-of-type(1){
+#content .project-card .project-head button:nth-of-type(1){
     position: absolute;
     background-color: var(--primary);
     border: none;
@@ -30,17 +30,18 @@
     top: 7%;
 }
 
-#content .project-card button:nth-of-type(2){
+#content .project-card .project-head button:nth-of-type(2){
     display: block;
 }
 
 #content .project-card .tasks-list{
     display: grid;
-    grid-template-columns: 0.2fr 2fr;
-    column-gap: 0.5rem;
-    line-height: 1.5;
+    grid-auto-rows: 3rem;
 }
 
-#content .project-card .tasks-list p{
-    font-size: 1.2rem;
+#content .project-card .tasks-list .task{
+    display: grid;
+    grid-template-columns: 0.2fr 2fr 0.5fr 0.5fr;
+    gap: 4px;
 }
+

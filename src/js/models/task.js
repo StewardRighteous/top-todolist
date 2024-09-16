@@ -1,4 +1,4 @@
-import {isToday, isTomorrow, isYesterday, dsy, isMonday, isTuesday, isWednesday, isThursday, isFriday, isSaturday, isSunday } from "date-fns";
+import {isToday, isTomorrow, isYesterday, dsy, isMonday, isTuesday, isWednesday, isThursday, isFriday, isSaturday, isSunday, isValid } from "date-fns";
 
 // Each todo or task
 export default class Task {
@@ -38,5 +38,19 @@ export default class Task {
         }
         let dueTime = `${taskDay} ${this.time.getHours()}:${this.time.getMinutes()}`;
         return dueTime;
+    }
+
+    hasDescription(){
+        if(this.description == ""){
+            return false;
+        }
+        return true;
+    }
+
+    hasDate(){
+        if(isValid(this.time)){
+            return true;
+        }
+        return false;
     }
 }
