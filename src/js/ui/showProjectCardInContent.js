@@ -1,9 +1,10 @@
 // This function will create an UI that will show all the tasks and the projects in the content area of the page
 
-import settingsIconImage from "../../img/settings.svg";
+import settingsIconImage from "../../img/more-vertical.svg";
 import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../manager/barrel";
 import trashIcon from "../../img/trash-2.svg";
 import starIcon from "../../img/star.svg";
+import editIcon from "../../img/edit.svg";
 
 export default function showProjectCardInContent() {
     // getting content area
@@ -92,6 +93,11 @@ export default function showProjectCardInContent() {
                             taskAndDateContainer.appendChild(dueTime);
                         }
 
+                        const editTaskButton = document.createElement("button");
+                        const editButtonImage = document.createElement("img");
+                        editButtonImage.src = editIcon;
+                        editTaskButton.appendChild(editButtonImage);
+
                         const starTaskButton = document.createElement("button");
                         const starIconImage = document.createElement("img");
                         starIconImage.src = starIcon;
@@ -102,7 +108,7 @@ export default function showProjectCardInContent() {
                         deleteIconImage.src = trashIcon;
                         taskDeleteButton.appendChild(deleteIconImage);
                         
-                        taskContainer.append(completedCheckboxInput, taskAndDateContainer, starTaskButton, taskDeleteButton);
+                        taskContainer.append(completedCheckboxInput, taskAndDateContainer,editTaskButton, starTaskButton, taskDeleteButton);
                         taskListContainer.appendChild(taskContainer);
                     }
                 }

@@ -27,7 +27,7 @@
     background-color: var(--primary);
     border: none;
     right: 4%;
-    top: 7%;
+    top: 15%;
 }
 
 #content .project-card .project-head button:nth-of-type(2){
@@ -40,7 +40,7 @@
 
 #content .project-card .tasks-list .task{
     display: grid;
-    grid-template-columns: 0.2fr 2fr 0.5fr 0.5fr;
+    grid-template-columns: 0.2fr 2fr repeat(3, 0.4fr);
     gap: 4px;
     align-items: center;
 }
@@ -79,4 +79,5 @@
 #content .project-card .tasks-list button{
     background-color: var(--primary);
     border: none;
+    width: fit-content;
 }
