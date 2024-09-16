@@ -28,13 +28,8 @@ export default class Task {
         }else if(isYesterday(this.time)){
             taskDay = "Yesterday";
         }else{
-            if(isMonday(this.time)) taskDay = "Monday";
-            if(isTuesday(this.time)) taskDay = "Tuesday";
-            if(isWednesday(this.time)) taskDay = "Wednesday";
-            if(isThursday(this.time)) taskDay = "Thursday";
-            if(isFriday(this.time)) taskDay = "Friday";
-            if(isSaturday(this.time)) taskDay = "Saturday";
-            if(isSunday(this.time)) taskDay = "Sunday";
+            const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+            taskDay = `${month[this.time.getMonth()]} ${this.time.getDate()}`;
         }
         let dueTime = `${taskDay} ${this.time.getHours()}:${this.time.getMinutes()}`;
         return dueTime;
