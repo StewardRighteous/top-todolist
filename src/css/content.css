@@ -2,7 +2,7 @@
 #content {
     grid-area: content;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     grid-auto-rows: max-content;
     gap: 1rem;
 }
@@ -36,12 +36,47 @@
 
 #content .project-card .tasks-list{
     display: grid;
-    grid-auto-rows: 3rem;
 }
 
 #content .project-card .tasks-list .task{
     display: grid;
     grid-template-columns: 0.2fr 2fr 0.5fr 0.5fr;
     gap: 4px;
+    align-items: center;
 }
 
+#content .project-card .tasks-list .task input[type="checkbox"]{
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+#content .project-card .tasks-list .task .task-name-desc-date{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+#content .project-card .tasks-list .task .task-name-desc-date h1{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+#content .project-card .tasks-list .task-name-desc-date p{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#content .project-card .tasks-list .task-name-desc-date p.time{
+    display: block;
+    border: 1px solid var(--text);
+    border-radius: 1rem;
+    align-self: baseline;
+    padding: 4px;
+    font-size: 0.9rem;
+    background-color: whitesmoke;
+    color: black;
+}
+
+#content .project-card .tasks-list button{
+    background-color: var(--primary);
+    border: none;
+}

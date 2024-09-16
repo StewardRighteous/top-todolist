@@ -86,6 +86,7 @@ export default function showProjectCardInContent() {
                         }
 
                         const dueTime = document.createElement("p");
+                        dueTime.className = "time"
                         if (task.hasDate()) {
                             dueTime.textContent = task.dueTime;
                             taskAndDateContainer.appendChild(dueTime);

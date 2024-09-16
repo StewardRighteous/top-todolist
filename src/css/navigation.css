@@ -5,6 +5,7 @@ nav {
     display: grid;
     grid-template-rows: 3rem 5rem 1fr;
     gap: 1rem;
+    border-right: 2px solid var(--text);
 }
 
 nav .create-task button {
