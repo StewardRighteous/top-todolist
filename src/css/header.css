@@ -13,3 +13,17 @@ header .header-settings {
     flex-direction: row-reverse;
     gap: 2rem;
 }
+
+header dialog[open]{
+    width: 38ch;
+    margin-top: 5px;
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1rem;
+}
+
+header dialog[open] p{
+    text-align: justify;
+}

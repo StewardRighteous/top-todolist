@@ -4,12 +4,14 @@ import "./css/header.css";
 import "./css/navigation.css";
 import "./css/content.css";
 import { showAllProjectsInNav, showAddNewListDialogBox, 
-    loadPageWithDarkOrLightMode, showCreateNewTaskDialog, showProjectCardInContent } from "./js/ui/barrel.js";
+    loadPageWithDarkOrLightMode, showCreateNewTaskDialog, showProjectCardInContent, 
+    showHelpPopup} from "./js/ui/barrel.js";
 
 loadPageWithDarkOrLightMode();
 showAllProjectsInNav();
 showProjectCardInContent();
 showAddNewListDialogBox();
 showCreateNewTaskDialog();
+showHelpPopup();
 
 
