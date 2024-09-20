@@ -22,7 +22,19 @@ export default function showHelpPopup(){
         const helpIconDImensions = helpIcon.getBoundingClientRect();
         helpPopup.style.top = `${helpIconDImensions.y + 30}px`;
         helpPopup.style.left = `${helpIconDImensions.x - 250}px`;
-        helpPopup.show();
+        helpPopup.showModal();
+    });
+
+    // Close Popup when clicked outside
+    helpPopup.addEventListener("click", (e)=>{
+        const helpPopupDimensions = helpPopup.getBoundingClientRect();
+        if(e.clientX < helpPopupDimensions.left ||
+            e.clientX > helpPopupDimensions.right ||
+            e.clientY < helpPopupDimensions.top ||
+            e.clientY > helpPopupDimensions.bottom
+         ){
+            helpPopup.close();
+         }
     });
 
     popupCloseButton.addEventListener("click", ()=>{
