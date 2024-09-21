@@ -1,4 +1,5 @@
 import {isToday, isTomorrow, isYesterday, dsy, isMonday, isTuesday, isWednesday, isThursday, isFriday, isSaturday, isSunday, isValid } from "date-fns";
+import { tr } from "date-fns/locale";
 
 // Each todo or task
 export default class Task {
@@ -8,6 +9,7 @@ export default class Task {
     repeat;
     project;
     starred;
+    completed;
 
     constructor(title, description, time, repeat, project, starred) {
         this.title = title;
@@ -16,6 +18,7 @@ export default class Task {
         this.repeat = repeat || false;
         this.project = project || "default";
         this.starred = starred || false;
+        this.completed = false;
     }
 
     get dueTime (){
@@ -47,5 +50,21 @@ export default class Task {
             return true;
         }
         return false;
+    }
+
+    toggleStarred(){
+        this.starred = (this.starred == false) ? true : false;
+    }
+
+    toggleCompleted(){
+        this.completed = (this.completed == false) ? true : false;
+    }
+
+    updateTask(name = this.name, description = this.description, time = this.dueTime, repeat = this.repeat , project = this.project){
+        this.name = name;
+        this.description = description;
+        this.time = new Date(time);
+        this.repeat = repeat;
+        this.project = project;
     }
 }
