@@ -5,6 +5,7 @@ import showCreateNewTaskDialog from "./dialogs/showCreateNewTaskDialog.js";
 import showProjectCardInContent from "./showProjectCardInContent.js";
 import showHelpPopup from "./popups/showHelpPopup.js";
 import showUserOptionsPopup from "./popups/showUserOptionsPopup.js";
+import showStarredCard from "./showStarredCard.js";
 
 export {showAllProjectsInNav, 
     showAddNewListDialogBox, 
@@ -13,4 +14,5 @@ export {showAllProjectsInNav,
     showProjectCardInContent, 
     showHelpPopup,
     showUserOptionsPopup,
+    showStarredCard
 };

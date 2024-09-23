@@ -81,3 +81,9 @@
     border: none;
     width: fit-content;
 }
+
+#content .no-starred-tasks{
+    grid-column: 1/-1;
+    text-align: center;
+    width: 39ch;
+}
