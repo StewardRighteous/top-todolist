@@ -3,7 +3,7 @@ import Task from "./task";
 // Contains a list of Tasks related to each other
 export default class Project {
     _projectTitle;
-    _tasks = [];
+    _tasks = [new Task()];
     _isShowProject = true;
 
     constructor(title) {
@@ -29,8 +29,8 @@ export default class Project {
         return this._tasks;
     }
 
-    addTaskToProject(title, description, time, repeat, project, starred) {
-        let task = new Task(title, description, time, repeat, project, starred);
+    addTaskToProject(title, description, time, repeat, project) {
+        let task = new Task(title, description, time, repeat, project);
         this._tasks.push(task);
     }
 

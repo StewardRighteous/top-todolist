@@ -4,7 +4,9 @@ import settingsIconImage from "../../img/more-vertical.svg";
 import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../manager/barrel";
 import trashIcon from "../../img/trash-2.svg";
 import starIcon from "../../img/star.svg";
+import starredIcon from "../../img/starred.svg";
 import editIcon from "../../img/edit.svg";
+import taskObserver from "../manager/task/taskObserver";
 
 export default function showProjectCardInContent() {
     // getting content area
@@ -100,7 +102,12 @@ export default function showProjectCardInContent() {
 
                         const starTaskButton = document.createElement("button");
                         const starIconImage = document.createElement("img");
-                        starIconImage.src = starIcon;
+                        if(task.isStarred == false){
+                            starIconImage.src = starIcon;
+                        }else{
+                            starIconImage.src = starredIcon;
+                        }
+                        
                         starTaskButton.appendChild(starIconImage);
 
                         const taskDeleteButton = document.createElement("button");
@@ -110,9 +117,16 @@ export default function showProjectCardInContent() {
                         
                         taskContainer.append(completedCheckboxInput, taskAndDateContainer,editTaskButton, starTaskButton, taskDeleteButton);
                         taskListContainer.appendChild(taskContainer);
+
+                        // Task buttons functionalities
+                        starTaskButton.addEventListener("click", (e)=>{
+                            task.toggleStarred();
+                            taskObserver.notify();
+                        });
                     }
                 }
 
+                taskObserver.subscribe(addTaskContentToProjectCard);
                 addTaskContentToProjectCard();
                 TaskObserver.subscribe(addTaskContentToProjectCard);
 

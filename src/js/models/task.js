@@ -1,5 +1,4 @@
 import {isToday, isTomorrow, isYesterday, dsy, isMonday, isTuesday, isWednesday, isThursday, isFriday, isSaturday, isSunday, isValid } from "date-fns";
-import { tr } from "date-fns/locale";
 
 // Each todo or task
 export default class Task {
@@ -11,13 +10,13 @@ export default class Task {
     starred;
     completed;
 
-    constructor(title, description, time, repeat, project, starred) {
+    constructor(title, description, time, repeat, project) {
         this.title = title;
         this.description = description || "";
         this.time = new Date(time) || new Date();
         this.repeat = repeat || false;
         this.project = project || "default";
-        this.starred = starred || false;
+        this.starred = false;
         this.completed = false;
     }
 
@@ -36,6 +35,10 @@ export default class Task {
         }
         let dueTime = `${taskDay} ${this.time.getHours()}:${this.time.getMinutes()}`;
         return dueTime;
+    }
+
+    get isStarred(){
+        return this.starred;
     }
 
     hasDescription(){
