@@ -5,6 +5,7 @@ export default class Project {
     _projectTitle;
     _tasks = [new Task()];
     _isShowProject = true;
+    _allStarredTasks = [];
 
     constructor(title) {
         this._projectTitle = title;
@@ -37,4 +38,10 @@ export default class Project {
     deleteTaskFromProject(taskTitle) {
         this._tasks = this._tasks.filter(value => value == taskTitle);
     }
+
+    getAllStarredTasks(){
+        this._allStarredTasks = this._tasks.filter(task => task.isStarred == true);
+        return this._allStarredTasks;
+    }
+
 }

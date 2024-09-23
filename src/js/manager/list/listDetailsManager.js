@@ -29,6 +29,13 @@ class createListDetailsManager {
         return List.getList().allProjects;
     }
 
+    // returns all the starred tasks in those projects
+    getAllStarredTasksFromAllProjects(){
+        let starredTasks = [];
+        List.getList().allProjects.forEach(project => starredTasks.concat(project.getAllStarredTasks()));
+        return starredTasks;
+    }
+
     changeShowOrHideProjectCard(projectName, isShow){
         let projectIndex = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
         List.getList().allProjects[projectIndex].isShowProject = isShow;
