@@ -3,7 +3,7 @@ import Task from "./task";
 // Contains a list of Tasks related to each other
 export default class Project {
     _projectTitle;
-    _tasks = [new Task()];
+    _tasks = [new Task("sample")];
     _isShowProject = true;
     _allStarredTasks = [];
 

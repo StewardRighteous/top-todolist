@@ -32,7 +32,10 @@ class createListDetailsManager {
     // returns all the starred tasks in those projects
     getAllStarredTasksFromAllProjects(){
         let starredTasks = [];
-        List.getList().allProjects.forEach(project => starredTasks.concat(project.getAllStarredTasks()));
+        List.getList().allProjects.forEach(project => {
+            let starredTaskFromProject = project.getAllStarredTasks();
+            starredTasks = starredTasks.concat(starredTaskFromProject);
+        });
         return starredTasks;
     }
 
