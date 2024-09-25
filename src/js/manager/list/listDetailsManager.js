@@ -57,6 +57,10 @@ class createListDetailsManager {
         }
         return false;
     }
+
+    deleteProjectFromList(projectName){
+        List.getList().deleteProject(projectName);
+    }
 }
 
 export default new createListDetailsManager();

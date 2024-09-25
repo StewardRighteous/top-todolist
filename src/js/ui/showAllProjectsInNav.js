@@ -48,10 +48,20 @@ export default function showAllProjectsInNav() {
         }
 
         // Hiding and showing project card according to this checkbox
-        toggleShowProjectCheckbox.addEventListener("click", (e)=> {
+        toggleShowProjectCheckbox.addEventListener("click", ()=> {
             listDetailsManager.changeShowOrHideProjectCard(projectTitle, toggleShowProjectCheckbox.checked);
             ProjectObserver.notify();
         });
+
+         // delete project after confirmation
+         deleteProjectButton.addEventListener("click", ()=>{
+            let confirmDeleteProject = confirm("Do you want to delete this project ? \n (The deleted data cannot be retrieved )");
+            if(confirmDeleteProject){
+                debugger;
+                listDetailsManager.deleteProjectFromList(projectTitle);
+                ListObserver.notify();
+            }
+         });
     }
 }
 

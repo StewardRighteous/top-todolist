@@ -12,7 +12,9 @@ export default class List {
         this._projects.push(new Project(projectName));
     }
 
+    // Deleting a project from the list
     deleteProject(projectName) {
-        this._projects = this._projects.filter(project => (project.projectName != projectName));
+        let projectIndex = this._projects.findIndex(project => project.projectName == projectName);
+        this._projects.splice(projectIndex,1);
     }
 }
