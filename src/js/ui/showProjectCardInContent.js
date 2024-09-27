@@ -41,6 +41,15 @@ export default function showProjectCardInContent() {
                 // add new Task to project button
                 const addTaskButton = document.createElement("button");
                 addTaskButton.textContent = "Add Task";
+                addTaskButton.addEventListener("click",()=>{
+                    // show add new task dialog when clicked[The project name in dropdown should match with current project]
+                    const navigationPane = document.querySelector("nav");
+                    const allDialogs = navigationPane.querySelectorAll("dialog");
+                    const addNewTaskDialog = allDialogs[1];
+                    const dropDownSelect = addNewTaskDialog.querySelector("select");
+                    dropDownSelect.value = project.projectTitle;
+                    addNewTaskDialog.showModal();
+                });
 
                 // settings button
                 const settingsButton = document.createElement("button");
