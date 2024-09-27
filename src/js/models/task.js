@@ -20,6 +20,14 @@ export default class Task {
         this.completed = false;
     }
 
+    get taskName(){
+        return this.title;
+    }
+
+    get projectName(){
+        return this.project;
+    }
+
     get dueTime (){
         let taskDay;
         // Selecting which day 
@@ -39,6 +47,10 @@ export default class Task {
 
     get isStarred(){
         return this.starred;
+    }
+
+    get isCompleted(){
+        return this.completed;
     }
 
     hasDescription(){
@@ -62,6 +74,8 @@ export default class Task {
     toggleCompleted(){
         this.completed = (this.completed == false) ? true : false;
     }
+
+
 
     updateTask(name = this.name, description = this.description, time = this.dueTime, repeat = this.repeat , project = this.project){
         this.name = name;

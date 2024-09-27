@@ -25,7 +25,7 @@ export default function showProjectCardInContent() {
         hiddenMessage.style.border = "2px solid var(--text)";
         contentArea.appendChild(hiddenMessage);
     } else {
-        for (let project of listDetailsManager.getAllProjectsWithTasks()) {
+        for (let project of listDetailsManager.getAllProjects()) {
             if (project.isShowProject) {
                 // project card
                 const projectHeadContainer = document.createElement("div");

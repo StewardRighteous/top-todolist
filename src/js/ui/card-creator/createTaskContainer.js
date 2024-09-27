@@ -1,25 +1,42 @@
 // creates a task container with checkbox, task name, description, time , edit , star, delete options
-import { TaskObserver } from "../../manager/barrel.js";
+import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../../manager/barrel.js";
 import trashIcon from "../../../img/trash-2.svg";
 import starIcon from "../../../img/star.svg";
 import starredIcon from "../../../img/starred.svg";
 import editIcon from "../../../img/edit.svg";
-export default function createTaskContainer(task, taskListContainer){
+export default function createTaskContainer(task, taskListContainer) {
     const taskContainer = document.createElement("div");
     taskContainer.className = "task";
 
     const completedCheckboxInput = document.createElement("input");
     completedCheckboxInput.type = "checkbox";
 
+    //check for completion and show according to that 
+    function taskCompletedStatusOnCheckbox() {
+        if (task.isCompleted) {
+            completedCheckboxInput.checked = true;
+        } else {
+            completedCheckboxInput.checked = false;
+        }
+    }
+
+    taskCompletedStatusOnCheckbox();
+    TaskObserver.subscribe(taskCompletedStatusOnCheckbox);
     const taskAndDateContainer = document.createElement("div");
     taskAndDateContainer.className = "task-name-desc-date"
 
     const taskName = document.createElement("h1");
     taskName.textContent = task.title;
+
+    // Show strikethrough when task is completed
+    if (task.isCompleted == true) {
+        taskName.style.textDecoration = "line-through";
+    }
+
     taskAndDateContainer.appendChild(taskName);
 
     const taskDescription = document.createElement("p");
-    if(task.hasDescription()){
+    if (task.hasDescription()) {
         taskDescription.textContent = task.description;
         taskAndDateContainer.appendChild(taskDescription);
     }
@@ -38,26 +55,32 @@ export default function createTaskContainer(task, taskListContainer){
 
     const starTaskButton = document.createElement("button");
     const starIconImage = document.createElement("img");
-    if(task.isStarred == false){
+    if (task.isStarred == false) {
         starIconImage.src = starIcon;
-    }else{
+    } else {
         starIconImage.src = starredIcon;
     }
-    
+
     starTaskButton.appendChild(starIconImage);
 
     const taskDeleteButton = document.createElement("button");
     const deleteIconImage = document.createElement("img");
     deleteIconImage.src = trashIcon;
     taskDeleteButton.appendChild(deleteIconImage);
-    
-    taskContainer.append(completedCheckboxInput, taskAndDateContainer,editTaskButton, starTaskButton, taskDeleteButton);
+
+    taskContainer.append(completedCheckboxInput, taskAndDateContainer, editTaskButton, starTaskButton, taskDeleteButton);
     taskListContainer.appendChild(taskContainer);
 
     // Task buttons functionalities
-    starTaskButton.addEventListener("click", (e)=>{
+    starTaskButton.addEventListener("click", (e) => {
         task.toggleStarred();
         TaskObserver.notify();
     });
 
+    // Mark tasks as completed or uncompleted
+    completedCheckboxInput.addEventListener("click", (e) => {
+        task.toggleCompleted();
+        listDetailsManager.sortUncompletedFromCompleted(task.projectName);
+        ProjectObserver.notify();
+    });
 }
