@@ -3,6 +3,11 @@ import Task from "../../models/task";
 import List from "./listStateManager"
 
 class createListDetailsManager {
+    // Function that can be reused to get allProjects
+    getAllProjects(){
+        return List.getList().allProjects;
+    } 
+
     // returns the title of all projects in the list
     getAllProjectTitles() {
         const projectTitles = [];
@@ -20,19 +25,16 @@ class createListDetailsManager {
 
     // Adds task to the project in the list
     addTaskToProject(projectName, title, description, time, repeat, project) {
-        let indexOfProject = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
-        List.getList().allProjects[indexOfProject].addTaskToProject(title, description, time, repeat, project);
-    }
-
-    // returns projects with its tasks
-    getAllProjectsWithTasks(){
-        return List.getList().allProjects;
+        let allProjects = this.getAllProjects();
+        let indexOfProject = allProjects.findIndex(project => project.projectTitle == projectName);
+        allProjects[indexOfProject].addTaskToProject(title, description, time, repeat, project);
     }
 
     // returns all the starred tasks in those projects
     getAllStarredTasksFromAllProjects(){
         let starredTasks = [];
-        List.getList().allProjects.forEach(project => {
+        let allProjects = this.getAllProjects();
+        allProjects.forEach(project => {
             let starredTaskFromProject = project.getAllStarredTasks();
             starredTasks = starredTasks.concat(starredTaskFromProject);
         });
@@ -40,18 +42,21 @@ class createListDetailsManager {
     }
 
     changeShowOrHideProjectCard(projectName, isShow){
-        let projectIndex = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
-        List.getList().allProjects[projectIndex].isShowProject = isShow;
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
+        allProjects[projectIndex].isShowProject = isShow;
     }
 
     getShowOrHideProjectCard(projectName){
-        let projectIndex = List.getList().allProjects.findIndex(project => project.projectTitle == projectName);
-        let isShow = List.getList().allProjects[projectIndex].isShowProject;
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
+        let isShow = allProjects[projectIndex].isShowProject;
         return isShow;
     }
 
     isAllCardsHidden(){
-        let showProject = List.getList().allProjects.filter(project => project.isShowProject == true);
+        let allProjects = this.getAllProjects();
+        let showProject = allProjects.filter(project => project.isShowProject == true);
         if(showProject.length == 0){
             return true;
         }
