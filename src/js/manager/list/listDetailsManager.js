@@ -66,7 +66,6 @@ class createListDetailsManager {
     sortUncompletedFromCompleted(projectName){
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
-        debugger;
         allProjects[projectIndex].sortUncompletedToCompleted();
     }
 

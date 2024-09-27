@@ -64,7 +64,6 @@ export default function showAllProjectsInNav() {
             let confirmDeleteProject = confirm("Do you want to delete this project ? \n (The deleted data cannot be retrieved )");
             if (confirmDeleteProject) {
                 listDetailsManager.deleteProjectFromList(projectTitle);
-                debugger;
                 allTasksButton.style.backgroundColor = "var(--secondary)";
                 starredTasksButton.style.backgroundColor = "var(--background)";
                 ListObserver.notify();
