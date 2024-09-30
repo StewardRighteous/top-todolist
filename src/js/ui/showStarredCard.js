@@ -24,6 +24,7 @@ export default function showStarredCard() {
 
     removeProjectCardsFromContent();
 
+    // Show No Starred Tasks message incase of no starred tasks
     if (listDetailsManager.getAllStarredTasksFromAllProjects().length == 0) {
         const starredMessageContainer = document.createElement("div");
         const noStarredTasksMessage = document.createElement("h1");

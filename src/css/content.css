@@ -88,7 +88,7 @@
     width: 39ch;
 }
 
-/* Add new task dialog box */
+/* update task dialog box */
 #content .edit-task{
     display: grid;
     grid-template-columns: 1fr 1fr;

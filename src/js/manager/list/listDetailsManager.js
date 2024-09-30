@@ -1,5 +1,4 @@
 // Class that deals with parsing and adding data from the List to be used by others
-import Task from "../../models/task";
 import List from "./listStateManager"
 
 class createListDetailsManager {
@@ -48,12 +47,14 @@ class createListDetailsManager {
         return starredTasks;
     }
 
+    // Change the visibility of a card in content section
     changeShowOrHideProjectCard(projectName, isShow) {
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
         allProjects[projectIndex].isShowProject = isShow;
     }
 
+    // Returns the visibility of a card
     getShowOrHideProjectCard(projectName) {
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
@@ -61,6 +62,7 @@ class createListDetailsManager {
         return isShow;
     }
 
+    // Returns true if all cards visibility is off [false]
     isAllCardsHidden() {
         let allProjects = this.getAllProjects();
         let showProject = allProjects.filter(project => project.isShowProject == true);
