@@ -24,6 +24,7 @@ export default function showCreateNewTaskDialog() {
     titleInput.maxLength = 20;
     titleInput.minLength = 2;
     titleInput.required = true;
+    titleInput.autofocus = true;
 
     // Task description
     const descriptionLabel = document.createElement("label");
