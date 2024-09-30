@@ -4,6 +4,7 @@ import {isToday, isTomorrow, isYesterday, dsy, isMonday, isTuesday, isWednesday,
 export default class Task {
     title;
     description;
+    rawTime; // To give date to  update dialog box input
     time;
     repeat;
     project;
@@ -13,6 +14,7 @@ export default class Task {
     constructor(title, description, time, repeat, project) {
         this.title = title;
         this.description = description || "";
+        this.rawTime = time;
         this.time = new Date(time) || new Date();
         this.repeat = repeat || false;
         this.project = project || "default";
@@ -75,13 +77,4 @@ export default class Task {
         this.completed = (this.completed == false) ? true : false;
     }
 
-
-
-    updateTask(name = this.name, description = this.description, time = this.dueTime, repeat = this.repeat , project = this.project){
-        this.name = name;
-        this.description = description;
-        this.time = new Date(time);
-        this.repeat = repeat;
-        this.project = project;
-    }
 }

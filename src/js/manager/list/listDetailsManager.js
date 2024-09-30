@@ -4,9 +4,9 @@ import List from "./listStateManager"
 
 class createListDetailsManager {
     // Function that can be reused to get allProjects
-    getAllProjects(){
+    getAllProjects() {
         return List.getList().allProjects;
-    } 
+    }
 
     // returns the title of all projects in the list
     getAllProjectTitles() {
@@ -31,7 +31,7 @@ class createListDetailsManager {
     }
 
     // returns all the starred tasks in those projects
-    getAllStarredTasksFromAllProjects(){
+    getAllStarredTasksFromAllProjects() {
         let starredTasks = [];
         let allProjects = this.getAllProjects();
         allProjects.forEach(project => {
@@ -41,35 +41,35 @@ class createListDetailsManager {
         return starredTasks;
     }
 
-    changeShowOrHideProjectCard(projectName, isShow){
+    changeShowOrHideProjectCard(projectName, isShow) {
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
         allProjects[projectIndex].isShowProject = isShow;
     }
 
-    getShowOrHideProjectCard(projectName){
+    getShowOrHideProjectCard(projectName) {
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
         let isShow = allProjects[projectIndex].isShowProject;
         return isShow;
     }
 
-    isAllCardsHidden(){
+    isAllCardsHidden() {
         let allProjects = this.getAllProjects();
         let showProject = allProjects.filter(project => project.isShowProject == true);
-        if(showProject.length == 0){
+        if (showProject.length == 0) {
             return true;
         }
         return false;
     }
 
-    sortUncompletedFromCompleted(projectName){
+    sortUncompletedFromCompleted(projectName) {
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
         allProjects[projectIndex].sortUncompletedToCompleted();
     }
 
-    deleteProjectFromList(projectName){
+    deleteProjectFromList(projectName) {
         List.getList().deleteProject(projectName);
     }
 }

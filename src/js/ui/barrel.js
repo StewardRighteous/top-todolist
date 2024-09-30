@@ -7,6 +7,7 @@ import showHelpPopup from "./popups/showHelpPopup.js";
 import showUserOptionsPopup from "./popups/showUserOptionsPopup.js";
 import showStarredCard from "./showStarredCard.js";
 import createTaskContainer from "./card-creator/createTaskContainer.js";
+import updateTaskDialog from "./dialogs/updateTaskDialog.js";
 
 export {showAllProjectsInNav, 
     showAddNewListDialogBox, 
@@ -16,5 +17,6 @@ export {showAllProjectsInNav,
     showHelpPopup,
     showUserOptionsPopup,
     showStarredCard,
-    createTaskContainer
+    createTaskContainer,
+    updateTaskDialog
 };

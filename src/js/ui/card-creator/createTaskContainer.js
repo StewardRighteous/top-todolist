@@ -4,6 +4,8 @@ import trashIcon from "../../../img/trash-2.svg";
 import starIcon from "../../../img/star.svg";
 import starredIcon from "../../../img/starred.svg";
 import editIcon from "../../../img/edit.svg";
+import { updateTaskDialog } from "../barrel.js";
+
 export default function createTaskContainer(task, taskListContainer) {
     const taskContainer = document.createElement("div");
     taskContainer.className = "task";
@@ -83,4 +85,10 @@ export default function createTaskContainer(task, taskListContainer) {
         listDetailsManager.sortUncompletedFromCompleted(task.projectName);
         ProjectObserver.notify();
     });
+
+    // Show and edit task details in dialog
+    editTaskButton.addEventListener("click", ()=>{
+        updateTaskDialog(task);
+    });
+
 }
