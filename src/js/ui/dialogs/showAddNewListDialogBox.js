@@ -1,6 +1,6 @@
 // Shows a list dialog box when clicked on add list button in Navigation Pane
 
-import {listDetailsManager, ListObserver} from "../../manager/barrel.js";
+import { listDetailsManager, ListObserver } from "../../manager/barrel.js";
 
 export default function showAddNewListDialogBox() {
     // getting navigation pane button
@@ -22,7 +22,7 @@ export default function showAddNewListDialogBox() {
     projectNameInput.id = "new-project";
 
     const buttonContainer = document.createElement("div");
-    buttonContainer.className = "buttons"; 
+    buttonContainer.className = "buttons";
     const addProjectButton = document.createElement("button");
     addProjectButton.textContent = "Create";
     const declineButton = document.createElement("button");
@@ -47,11 +47,13 @@ export default function showAddNewListDialogBox() {
     });
 
     // creates a new project and add it to the list
-    addProjectButton.addEventListener("click", ()=>{
+    addProjectButton.addEventListener("click", () => {
         // check for name to be atleast 3 characaters long
-        if(projectNameInput.value.length <= 2){
+        if (projectNameInput.value.length <= 2) {
             alert("Please Enter Project name");
-        }else{
+        } else if (listDetailsManager.isProjectNameAlreadyExists(projectNameInput.value)) { 
+            alert("Project Name Already Exists. Try a new name.")
+        } else {
             let projectName = projectNameInput.value;
             listDetailsManager.addToListOfProjects(projectName);
             newProjectCreationDialog.close();

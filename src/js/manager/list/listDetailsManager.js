@@ -18,6 +18,13 @@ class createListDetailsManager {
         return projectTitles;
     }
 
+    // Returns true if the name of a list/ project already exists
+    isProjectNameAlreadyExists(currentTitle){
+        let projectTitles = this.getAllProjectTitles();
+        let hasValue = projectTitles.includes(currentTitle);
+        return hasValue;
+    }
+
     // Adds project to the list of projects
     addToListOfProjects(nameOfProject) {
         List.getList().addProject(nameOfProject);
