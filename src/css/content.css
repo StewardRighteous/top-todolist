@@ -87,3 +87,36 @@
     text-align: center;
     width: 39ch;
 }
+
+/* Add new task dialog box */
+#content .edit-task{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.7rem;
+    position: relative;
+}
+
+#content .edit-task label{
+    font-size: larger;
+}
+
+#content .edit-task h1{
+    grid-column: 1/-1;
+    text-align: center;
+    font-size: xx-large;
+}
+
+#content .edit-task button.cancel-dialog{
+    position: absolute;
+    right: -1px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+#content .edit-task button.update-button{
+    grid-column: 1/-1;
+    justify-self: center;
+    padding: 0px 8px;
+    background-color:  rgb(55, 43, 216);
+    color: white;
+}

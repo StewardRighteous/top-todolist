@@ -8,7 +8,7 @@ export default function updateTaskDialog(task) {
     const updateTaskDialog = document.createElement("dialog");
 
     const updateTaskHeading = document.createElement("h1");
-    updateTaskHeading.textContent = "Add New Task";
+    updateTaskHeading.textContent = "Update Task";
     const cancelButton = document.createElement("button");
     cancelButton.textContent = "❌";
     cancelButton.className = "cancel-dialog";
@@ -72,7 +72,7 @@ export default function updateTaskDialog(task) {
 
     // adding to dialog box
     const updateTaskDialogContainer = document.createElement("div");
-    updateTaskDialogContainer.className = "add-new-task-dialog";
+    updateTaskDialogContainer.className = "edit-task";
     updateTaskDialogContainer.append(updateTaskHeading, cancelButton, titleLabel, titleInput,
         descriptionLabel, descriptionInput, dueDateLabel, dueDateInput, dueDateInput, repeatLabel,
         repeatInput, projectNameLabel, projectListDropDown, updateProjectButton);
