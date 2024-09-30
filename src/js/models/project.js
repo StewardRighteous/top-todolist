@@ -49,8 +49,9 @@ export default class Project {
         this.sortUncompletedToCompleted();
     }
 
-    deleteTaskFromProject(taskTitle) {
-        this._tasks = this._tasks.filter(value => value == taskTitle);
+    deleteTaskFromProject(deleteTask) {
+        let taskIndex = this._tasks.findIndex(task => task == deleteTask);
+        this._tasks.splice(taskIndex,1);
     }
 
     getAllStarredTasks(){

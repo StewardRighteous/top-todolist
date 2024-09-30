@@ -91,4 +91,9 @@ export default function createTaskContainer(task, taskListContainer) {
         updateTaskDialog(task);
     });
 
+    // Delete the particular task
+    taskDeleteButton.addEventListener("click", ()=>{
+        listDetailsManager.deleteTaskFromProject(task);
+        ProjectObserver.notify();
+    });
 }

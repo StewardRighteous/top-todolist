@@ -72,6 +72,12 @@ class createListDetailsManager {
     deleteProjectFromList(projectName) {
         List.getList().deleteProject(projectName);
     }
+
+    deleteTaskFromProject(task) {
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(project => project.projectTitle == task.projectName);
+        allProjects[projectIndex].deleteTaskFromProject(task);
+    }
 }
 
 export default new createListDetailsManager();
