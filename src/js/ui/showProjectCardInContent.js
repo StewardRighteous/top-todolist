@@ -5,6 +5,15 @@ import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from 
 import { createTaskContainer } from "./barrel.js";
 
 export default function showProjectCardInContent() {
+    // Changing button background color of All Tasks Button to show we are in all tasks section
+    const navigation = document.querySelector("nav");
+    const sectionButtons = navigation.querySelector(".section-buttons");
+    const allTasksButton = sectionButtons.querySelector("#all-tasks");
+    const starredTasksButton = sectionButtons.querySelector("#starred-tasks");
+
+    allTasksButton.style.backgroundColor = "var(--secondary)";
+    starredTasksButton.style.backgroundColor = "var(--background)";
+
     // getting content area
     const contentArea = document.querySelector("#content");
 
@@ -41,7 +50,7 @@ export default function showProjectCardInContent() {
                 // add new Task to project button
                 const addTaskButton = document.createElement("button");
                 addTaskButton.textContent = "Add Task";
-                addTaskButton.addEventListener("click",()=>{
+                addTaskButton.addEventListener("click", () => {
                     // show add new task dialog when clicked[The project name in dropdown should match with current project]
                     const navigationPane = document.querySelector("nav");
                     const allDialogs = navigationPane.querySelectorAll("dialog");

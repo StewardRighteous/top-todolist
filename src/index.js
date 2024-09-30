@@ -31,15 +31,11 @@ const starredTasksButton = sectionButtons.querySelector("#starred-tasks");
 allTasksButton.style.backgroundColor = "var(--secondary)";
 allTasksButton.addEventListener("click", () => {
     showProjectCardInContent();
-    allTasksButton.style.backgroundColor = "var(--secondary)";
-    starredTasksButton.style.backgroundColor = "var(--background)";
 });
 
 // Show all starred tasks when clicked on starred tasks button
 starredTasksButton.addEventListener("click", () => {
     showStarredCard();
-    starredTasksButton.style.backgroundColor = "var(--secondary)";
-    allTasksButton.style.backgroundColor = "var(--background)";
 });
 
 

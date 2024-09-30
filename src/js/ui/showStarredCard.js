@@ -4,6 +4,15 @@ import settingsIconImage from "../../img/more-vertical.svg";
 import { createTaskContainer } from "./barrel.js";
 
 export default function showStarredCard() {
+    // Changing button background color of Starred Tasks Button to show we are in starred tasks section
+    const navigation = document.querySelector("nav");
+    const sectionButtons = navigation.querySelector(".section-buttons");
+    const allTasksButton = sectionButtons.querySelector("#all-tasks");
+    const starredTasksButton = sectionButtons.querySelector("#starred-tasks");
+
+    starredTasksButton.style.backgroundColor = "var(--secondary)";
+    allTasksButton.style.backgroundColor = "var(--background)";
+
     // getting content area
     const contentArea = document.querySelector("#content");
 
