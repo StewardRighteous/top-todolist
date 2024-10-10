@@ -11,6 +11,7 @@ export default class Task {
     starred;
     completed;
 
+    // CREATE
     constructor(title, description, time, repeat, project) {
         this.title = title;
         this.description = description || "";
@@ -22,6 +23,7 @@ export default class Task {
         this.completed = false;
     }
 
+    // READ
     get taskName(){
         return this.title;
     }
@@ -69,6 +71,7 @@ export default class Task {
         return false;
     }
 
+    // UPDATE
     toggleStarred(){
         this.starred = (this.starred == false) ? true : false;
     }
