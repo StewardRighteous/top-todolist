@@ -1,4 +1,5 @@
 import Task from "./task";
+import { } from "date-fns";
 
 // Contains a list of Tasks related to each other
 export default class Project {
@@ -7,56 +8,127 @@ export default class Project {
     _isShowProject = true;
     _allStarredTasks = [];
 
+    // Order Booleans to on and off according to user's want
+    isCreationOrder;
+    isStarredOrder;
+    isDueDateOrder;
+
+    // CREATE
     constructor(title) {
         this._projectTitle = title;
+        this.isCreationOrder = false;
+        this.isStarredOrder = true;
+        this.isDueDateOrder = false;
     }
 
+    // READ
     get projectTitle() {
         return this._projectTitle;
-    }
-    set projectTitle(value) {
-        this._projectTitle = value;
     }
 
     get isShowProject() {
         return this._isShowProject;
     }
 
-    set isShowProject(value){
-        this._isShowProject = value;
-    }
-
+    // returns list according to the user's want
     get allTasks() {
-        return this._tasks;
+        let tasks;
+        if (this.isStarredOrder) {
+            tasks = [...this.sortUnstarredFromStarred()];
+        } else {
+            tasks = [...this._tasks];
+        }
+        return tasks;
     }
 
-    // Function that sorts uncompleted tasks from completed tasks and puts it in front
-    sortUncompletedToCompleted(){
-        this._tasks.sort((a,b)=> {
-            if(a.completed == false && b.completed == false || a.completed == true && b.completed == true){
-                return 0;
-            }if(a.completed == true){
-                return 1;
-            }else{
-                return -1;
-            }
-        });
+    getAllStarredTasks() {
+        this._allStarredTasks = this._tasks.filter(task => task.isStarred == true);
+        return this._allStarredTasks;
     }
 
+    // UPDATE
     addTaskToProject(title, description, time, repeat, project) {
         let task = new Task(title, description, time, repeat, project);
         this._tasks.push(task);
         this.sortUncompletedToCompleted();
     }
 
+
+    set projectTitle(value) {
+        this._projectTitle = value;
+    }
+
+    set isShowProject(value) {
+        this._isShowProject = value;
+    }
+
+    renameProject(newProjectName) {
+        this._projectTitle = newProjectName;
+    }
+
+    setCreationOrder() {
+        this.isCreationOrder = true;
+        this.isDueDateOrder = false;
+        this.isStarredOrder = false;
+    }
+
+    setStarredOrder() {
+        this.isCreationOrder = false;
+        this.isDueDateOrder = false;
+        this.isStarredOrder = true;
+    }
+
+    setDueDateOrder() {
+        this.isCreationOrder = false;
+        this.isDueDateOrder = true;
+        this.isStarredOrder = false;
+    }
+
+    //DELETE 
     deleteTaskFromProject(deleteTask) {
         let taskIndex = this._tasks.findIndex(task => task == deleteTask);
-        this._tasks.splice(taskIndex,1);
+        this._tasks.splice(taskIndex, 1);
     }
 
-    getAllStarredTasks(){
-        this._allStarredTasks = this._tasks.filter(task => task.isStarred == true);
-        return this._allStarredTasks;
+    deleteAllCompletedTasks() {
+        const completedTasksIndex = [];
+        this._tasks.forEach(task => {
+            if (task.isCompleted) {
+                let taskIndex = this._tasks.findIndex(eachTask => eachTask == task);
+                completedTasksIndex.push(taskIndex);
+            }
+            completedTasksIndex.forEach(taskIndex => {
+                this._tasks.splice(taskIndex, 1);
+            })
+        });
     }
 
+    // EXCESS FUNCTIONS FOR SORTING
+    // Function that sorts starred and unstarred
+    sortUnstarredFromStarred() {
+        let tasksCopy = [...this._tasks];
+        tasksCopy.sort((a, b) => {
+            if (a.starred == false && b.starred == false || a.starred == true && b.starred == true) {
+                return 0;
+            } if (a.starred == true) {
+                return -1;
+            } else {
+                return 1;
+            }
+        });
+        return tasksCopy;
+    }
+
+    // Function that sorts uncompleted tasks from completed tasks and puts it in front
+    sortUncompletedToCompleted() {
+        this._tasks.sort((a, b) => {
+            if (a.completed == false && b.completed == false || a.completed == true && b.completed == true) {
+                return 0;
+            } if (a.completed == true) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+    }
 }
