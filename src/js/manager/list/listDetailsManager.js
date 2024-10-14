@@ -72,12 +72,6 @@ class createListDetailsManager {
         return false;
     }
 
-    sortUncompletedFromCompleted(projectName) {
-        let allProjects = this.getAllProjects();
-        let projectIndex = allProjects.findIndex(project => project.projectTitle == projectName);
-        allProjects[projectIndex].sortUncompletedToCompleted();
-    }
-
     deleteProjectFromList(projectName) {
         List.getList().deleteProject(projectName);
     }

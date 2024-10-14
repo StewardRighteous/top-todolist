@@ -75,14 +75,13 @@ export default function createTaskContainer(task, taskListContainer) {
 
     // Task buttons functionalities
     starTaskButton.addEventListener("click", (e) => {
-        task.toggleStarred();
+        task.toggleStarred(); //FIXME : Star card should always show all available stars
         TaskObserver.notify();
     });
 
     // Mark tasks as completed or uncompleted
     completedCheckboxInput.addEventListener("click", (e) => {
         task.toggleCompleted();
-        listDetailsManager.sortUncompletedFromCompleted(task.projectName);
         ProjectObserver.notify();
     });
 

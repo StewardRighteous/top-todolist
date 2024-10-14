@@ -1,5 +1,5 @@
 // This will return a starred card that will have only starred tasks
-import { listDetailsManager, TaskObserver } from "../manager/barrel";
+import { listDetailsManager, ProjectObserver, TaskObserver } from "../manager/barrel";
 import settingsIconImage from "../../img/more-vertical.svg";
 import { createTaskContainer } from "./barrel.js";
 
@@ -74,3 +74,5 @@ export default function showStarredCard() {
         contentArea.appendChild(starredTasksCard);
     }
 }
+
+TaskObserver.notify(showStarredCard);

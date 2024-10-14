@@ -1,3 +1,6 @@
+// TODO: Add Button for Sorting
+// TODO: Connect sorting button to Popup
+// TODO: Create popup that deals with sorting
 // This function will create an UI that will show all the tasks and the projects in the content area of the page
 
 import settingsIconImage from "../../img/more-vertical.svg";

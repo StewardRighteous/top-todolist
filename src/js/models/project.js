@@ -1,4 +1,6 @@
-import Task from "./task";
+// TODO: Make Date sorting work
+
+import {TaskSorter, Task} from "./barrel.js";
 import { } from "date-fns";
 
 // Contains a list of Tasks related to each other
@@ -34,15 +36,16 @@ export default class Project {
     get allTasks() {
         let tasks;
         if (this.isStarredOrder) {
-            tasks = [...this.sortUnstarredFromStarred()];
+            let sortedStarred = [...TaskSorter.sortUnstarredFromStarred(this._tasks)];
+            tasks = [...TaskSorter.sortUncompletedToCompleted(sortedStarred)];
         } else {
-            tasks = [...this._tasks];
+            tasks = TaskSorter.sortUncompletedToCompleted(this._tasks);
         }
         return tasks;
     }
 
     getAllStarredTasks() {
-        this._allStarredTasks = this._tasks.filter(task => task.isStarred == true);
+        this._allStarredTasks = this._tasks.filter(task => task.starred == true);
         return this._allStarredTasks;
     }
 
@@ -50,7 +53,6 @@ export default class Project {
     addTaskToProject(title, description, time, repeat, project) {
         let task = new Task(title, description, time, repeat, project);
         this._tasks.push(task);
-        this.sortUncompletedToCompleted();
     }
 
 
@@ -100,35 +102,6 @@ export default class Project {
             completedTasksIndex.forEach(taskIndex => {
                 this._tasks.splice(taskIndex, 1);
             })
-        });
-    }
-
-    // EXCESS FUNCTIONS FOR SORTING
-    // Function that sorts starred and unstarred
-    sortUnstarredFromStarred() {
-        let tasksCopy = [...this._tasks];
-        tasksCopy.sort((a, b) => {
-            if (a.starred == false && b.starred == false || a.starred == true && b.starred == true) {
-                return 0;
-            } if (a.starred == true) {
-                return -1;
-            } else {
-                return 1;
-            }
-        });
-        return tasksCopy;
-    }
-
-    // Function that sorts uncompleted tasks from completed tasks and puts it in front
-    sortUncompletedToCompleted() {
-        this._tasks.sort((a, b) => {
-            if (a.completed == false && b.completed == false || a.completed == true && b.completed == true) {
-                return 0;
-            } if (a.completed == true) {
-                return 1;
-            } else {
-                return -1;
-            }
         });
     }
 }
