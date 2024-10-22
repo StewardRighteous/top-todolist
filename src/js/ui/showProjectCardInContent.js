@@ -1,5 +1,3 @@
-// TODO: Connect sorting button to Popup
-// TODO: Create popup that deals with sorting
 // This function will create an UI that will show all the tasks and the projects in the content area of the page
 
 import settingsIconImage from "../../img/more-vertical.svg";
@@ -68,12 +66,9 @@ export default function showProjectCardInContent() {
                 const sortingIcon = document.createElement("img");
                 sortingIcon.src = sortingIconImage;
                 sortingButton.appendChild(sortingIcon);
-                sortingButton.addEventListener("click", ()=>{
-                    if(sortDialogPopup.open == false){
-                        sortDialogPopup.show();
-                    }else{
-                        sortDialogPopup.close();
-                    }
+                sortingButton.addEventListener("click", () => {
+                    sortDialogPopup.show();
+
                 });
 
                 // settings button
@@ -112,18 +107,40 @@ export default function showProjectCardInContent() {
 
                 const sortCreationOrderButton = document.createElement("button");
                 sortCreationOrderButton.textContent = "Creation Order";
+                sortCreationOrderButton.addEventListener("click", ()=>{
+                    listDetailsManager.sortProjectTasksToCreationOrder(project);
+                    ProjectObserver.notify();
+                    sortDialogPopup.close();
+                });
 
                 const sortStarredOrderButton = document.createElement("button");
                 sortStarredOrderButton.textContent = "Starred";
+                sortStarredOrderButton.addEventListener("click", ()=>{
+                    listDetailsManager.sortProjectTasksToStarredOrder(project);
+                    ProjectObserver.notify();
+                    sortDialogPopup.close();
+                });
 
                 const sortDueDateOrderButton = document.createElement("button");
                 sortDueDateOrderButton.textContent = "Due Date";
+                sortDueDateOrderButton.addEventListener("click", ()=>{
+                    listDetailsManager.sortProjectTasksToDueDateOrder(project);
+                    ProjectObserver.notify();
+                    sortDialogPopup.close();
+                });
 
                 const closeSortDialogPopupButton = document.createElement("button");
                 closeSortDialogPopupButton.textContent = "Cancel";
                 closeSortDialogPopupButton.style.backgroundColor = "red";
+                closeSortDialogPopupButton.addEventListener("click", () => {
+                    sortDialogPopup.close();
+                });
 
-                sortDialogPopup.append("Sort by", sortCreationOrderButton, sortStarredOrderButton, sortDueDateOrderButton, closeSortDialogPopupButton);
+                sortDialogPopup.append("Sort by", 
+                    sortCreationOrderButton, 
+                    sortStarredOrderButton, 
+                    sortDueDateOrderButton, 
+                    closeSortDialogPopupButton);
 
                 projectCard.append(
                     projectHeadContainer,

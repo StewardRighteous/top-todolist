@@ -62,6 +62,24 @@ class createListDetailsManager {
         return isShow;
     }
 
+    sortProjectTasksToCreationOrder(project){
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(thisProject => thisProject == project);
+        allProjects[projectIndex].setCreationOrder();
+    }
+
+    sortProjectTasksToStarredOrder(project){
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(thisProject => thisProject == project);
+        allProjects[projectIndex].setStarredOrder();
+    }
+
+    sortProjectTasksToDueDateOrder(project){
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(thisProject => thisProject == project);
+        allProjects[projectIndex].setDueDateOrder();
+    }
+
     // Returns true if all cards visibility is off [false]
     isAllCardsHidden() {
         let allProjects = this.getAllProjects();

@@ -15,9 +15,9 @@ export default class Project {
     // CREATE
     constructor(title) {
         this._projectTitle = title;
-        this.isCreationOrder = false;
+        this.isCreationOrder = true;
         this.isStarredOrder = false;
-        this.isDueDateOrder = true;
+        this.isDueDateOrder = false;
     }
 
     // READ
