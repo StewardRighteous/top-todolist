@@ -128,3 +128,20 @@
     background-color:  rgb(55, 43, 216);
     color: white;
 }
+
+/* Sorting and settings dialogs popups */
+#content .project-card dialog[open]{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    position: absolute;
+    top: 15%;
+    right: -32%;
+}
+
+#content .project-card dialog[open] button{
+    outline: none;
+    border: none;
+    background-color: grey;
+    color: white;
+}
