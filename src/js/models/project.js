@@ -1,7 +1,4 @@
-// TODO: Make Date sorting work
-
-import {TaskSorter, Task} from "./barrel.js";
-import { } from "date-fns";
+import { TaskSorter, Task } from "./barrel.js";
 
 // Contains a list of Tasks related to each other
 export default class Project {
@@ -19,8 +16,8 @@ export default class Project {
     constructor(title) {
         this._projectTitle = title;
         this.isCreationOrder = false;
-        this.isStarredOrder = true;
-        this.isDueDateOrder = false;
+        this.isStarredOrder = false;
+        this.isDueDateOrder = true;
     }
 
     // READ
@@ -38,6 +35,20 @@ export default class Project {
         if (this.isStarredOrder) {
             let sortedStarred = [...TaskSorter.sortUnstarredFromStarred(this._tasks)];
             tasks = [...TaskSorter.sortUncompletedToCompleted(sortedStarred)];
+        } else if (this.isDueDateOrder) {
+            // Seperating tasks with valid due date
+            let hasDueDate = [];
+            let notHasDueDate = [];
+            this._tasks.forEach((task) => {
+                if (task.hasDate()) {
+                    hasDueDate.push(task);
+                } else {
+                    notHasDueDate.push(task);
+                }
+            }
+            );
+            let dateSortedTask = [...TaskSorter.sortDueDates(hasDueDate),...notHasDueDate];
+            tasks = [...TaskSorter.sortUncompletedToCompleted(dateSortedTask)];  
         } else {
             tasks = TaskSorter.sortUncompletedToCompleted(this._tasks);
         }
