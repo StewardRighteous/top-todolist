@@ -1,9 +1,9 @@
-// TODO: Add Button for Sorting
 // TODO: Connect sorting button to Popup
 // TODO: Create popup that deals with sorting
 // This function will create an UI that will show all the tasks and the projects in the content area of the page
 
 import settingsIconImage from "../../img/more-vertical.svg";
+import sortingIconImage from "../../img/sort.svg";
 import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../manager/barrel";
 import { createTaskContainer } from "./barrel.js";
 
@@ -63,13 +63,19 @@ export default function showProjectCardInContent() {
                     addNewTaskDialog.showModal();
                 });
 
+                // sorting button
+                const sortingButton = document.createElement("button");
+                const sortingIcon = document.createElement("img");
+                sortingIcon.src = sortingIconImage;
+                sortingButton.appendChild(sortingIcon);
+
                 // settings button
                 const settingsButton = document.createElement("button");
                 const settingsIcon = document.createElement("img");
                 settingsIcon.src = settingsIconImage;
                 settingsButton.appendChild(settingsIcon);
 
-                projectHeadContainer.append(projectTitle, settingsButton, addTaskButton);
+                projectHeadContainer.append(projectTitle, sortingButton, settingsButton, addTaskButton);
 
                 //tasks in that particular project
                 const taskListContainer = document.createElement("div");
