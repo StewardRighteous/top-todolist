@@ -68,6 +68,13 @@ export default function showProjectCardInContent() {
                 const sortingIcon = document.createElement("img");
                 sortingIcon.src = sortingIconImage;
                 sortingButton.appendChild(sortingIcon);
+                sortingButton.addEventListener("click", ()=>{
+                    if(sortDialogPopup.open == false){
+                        sortDialogPopup.show();
+                    }else{
+                        sortDialogPopup.close();
+                    }
+                });
 
                 // settings button
                 const settingsButton = document.createElement("button");
@@ -100,9 +107,28 @@ export default function showProjectCardInContent() {
                 addTaskContentToProjectCard();
                 TaskObserver.subscribe(addTaskContentToProjectCard);
 
+                // Dialog to Sort between date, creation order, starred
+                const sortDialogPopup = document.createElement("dialog");
+
+                const sortCreationOrderButton = document.createElement("button");
+                sortCreationOrderButton.textContent = "Creation Order";
+
+                const sortStarredOrderButton = document.createElement("button");
+                sortStarredOrderButton.textContent = "Starred";
+
+                const sortDueDateOrderButton = document.createElement("button");
+                sortDueDateOrderButton.textContent = "Due Date";
+
+                const closeSortDialogPopupButton = document.createElement("button");
+                closeSortDialogPopupButton.textContent = "Cancel";
+                closeSortDialogPopupButton.style.backgroundColor = "red";
+
+                sortDialogPopup.append("Sort by", sortCreationOrderButton, sortStarredOrderButton, sortDueDateOrderButton, closeSortDialogPopupButton);
+
                 projectCard.append(
                     projectHeadContainer,
-                    taskListContainer
+                    taskListContainer,
+                    sortDialogPopup
                 );
                 contentArea.appendChild(projectCard);
             }
