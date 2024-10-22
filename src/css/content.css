@@ -26,11 +26,19 @@
     position: absolute;
     background-color: var(--primary);
     border: none;
-    right: 4%;
+    right: 15%;
     top: 15%;
 }
 
 #content .project-card .project-head button:nth-of-type(2){
+    position: absolute;
+    background-color: var(--primary);
+    border: none;
+    right: 4%;
+    top: 15%;
+}
+
+#content .project-card .project-head button:nth-of-type(3){
     display: block;
 }
 
