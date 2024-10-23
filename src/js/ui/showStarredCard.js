@@ -43,24 +43,19 @@ export default function showStarredCard() {
         const starredTaskTitle = document.createElement("h1");
         starredTaskTitle.textContent = "Starred Tasks";
 
-        const starredTaskSettingsButton = document.createElement("button");
-        const settingsImage = document.createElement("img");
-        settingsImage.src = settingsIconImage;
-        starredTaskSettingsButton.appendChild(settingsImage);
-
         const starredTasksListContainer = document.createElement("div");
         starredTasksListContainer.className = "tasks-list"; //reusing tasks-list class for similar design
 
+        function removeTasksFromStarredTaskContainer(){
+            while(starredTasksListContainer.children.length != 0){
+                starredTasksListContainer.firstChild.remove();
+            }
+        }
+        removeTasksFromStarredTaskContainer();
+
         for (let starredTask of listDetailsManager.getAllStarredTasksFromAllProjects()) {
 
-            function removeTasksFromStarredTaskContainer(){
-                while(starredTasksListContainer.children.length != 0){
-                    starredTasksListContainer.firstChild.remove();
-                }
-            }
-
-            function addTaskContentToStarredCard() {
-                removeTasksFromStarredTaskContainer();
+            function addTaskContentToStarredCard() {                
                 // task container with checkboxes[completed], name, due date, delete button and star button
                createTaskContainer(starredTask, starredTasksListContainer);
             }
@@ -69,10 +64,10 @@ export default function showStarredCard() {
         }
 
         // Appending everything together 
-        starredTaskHeadContainer.append(starredTaskTitle, starredTaskSettingsButton);
+        starredTaskHeadContainer.append(starredTaskTitle);
         starredTasksCard.append(starredTaskHeadContainer, starredTasksListContainer);
         contentArea.appendChild(starredTasksCard);
     }
 }
 
-TaskObserver.notify(showStarredCard);
+ProjectObserver.notify(showStarredCard);

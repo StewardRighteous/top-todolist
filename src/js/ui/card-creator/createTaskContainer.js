@@ -75,8 +75,8 @@ export default function createTaskContainer(task, taskListContainer) {
 
     // Task buttons functionalities
     starTaskButton.addEventListener("click", (e) => {
-        task.toggleStarred(); //FIXME : Star card should always show all available stars
-        TaskObserver.notify();
+        task.toggleStarred();
+        ProjectObserver.notify();
     });
 
     // Mark tasks as completed or uncompleted
