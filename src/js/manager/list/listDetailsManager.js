@@ -62,6 +62,18 @@ class createListDetailsManager {
         return isShow;
     }
 
+    renameProject(project, newProjectName){
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(currentProject => currentProject == project);
+        allProjects[projectIndex].renameProject(newProjectName);
+    }
+
+    deleteAllCompletedTasks(project){
+        let allProjects = this.getAllProjects();
+        let projectIndex = allProjects.findIndex(currentProject => currentProject == project);
+        allProjects[projectIndex].deleteAllCompletedTasks();
+    }
+
     sortProjectTasksToCreationOrder(project){
         let allProjects = this.getAllProjects();
         let projectIndex = allProjects.findIndex(thisProject => thisProject == project);
