@@ -1,8 +1,10 @@
+// TODO: connect settings popup buttons with their functions
 // This function will create an UI that will show all the tasks and the projects in the content area of the page
 
 import settingsIconImage from "../../img/more-vertical.svg";
 import sortingIconImage from "../../img/sort.svg";
 import { listDetailsManager, ListObserver, ProjectObserver, TaskObserver } from "../manager/barrel";
+import listObserver from "../manager/list/listObserver.js";
 import { createTaskContainer } from "./barrel.js";
 
 export default function showProjectCardInContent() {
@@ -150,6 +152,16 @@ export default function showProjectCardInContent() {
 
                 const renameProjectButton = document.createElement("button");
                 renameProjectButton.textContent = "Rename";
+                renameProjectButton.addEventListener("click", ()=>{
+                    let newProjectName = prompt("Enter New Project Name: ");
+                    if(newProjectName.length <= 2){
+                        alert("Project name should be atleast 3 characters long");
+                        newProjectName = prompt("Enter New Project Name: ")
+                    }else{
+                        listDetailsManager.renameProject(project, newProjectName);
+                        listObserver.notify();
+                    }
+                });
 
                 const deleteAllCompletedTasksButton = document.createElement("button");
                 deleteAllCompletedTasksButton.textContent = "Delete All Completed Tasks";
