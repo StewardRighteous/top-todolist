@@ -76,6 +76,9 @@ export default function showProjectCardInContent() {
                 const settingsIcon = document.createElement("img");
                 settingsIcon.src = settingsIconImage;
                 settingsButton.appendChild(settingsIcon);
+                settingsButton.addEventListener("click", ()=>{
+                    settingsDialogPopup.show();
+                });
 
                 projectHeadContainer.append(projectTitle, sortingButton, settingsButton, addTaskButton);
 
@@ -142,10 +145,33 @@ export default function showProjectCardInContent() {
                     sortDueDateOrderButton, 
                     closeSortDialogPopupButton);
 
+                // Dialog to show settings for renaming and delete all completed tasks
+                const settingsDialogPopup = document.createElement("dialog");
+
+                const renameProjectButton = document.createElement("button");
+                renameProjectButton.textContent = "Rename";
+
+                const deleteAllCompletedTasksButton = document.createElement("button");
+                deleteAllCompletedTasksButton.textContent = "Delete All Completed Tasks";
+
+                const closeSettingsDialogButton = document.createElement("button");
+                closeSettingsDialogButton.textContent = "Cancel";
+                closeSettingsDialogButton.style.backgroundColor = "red";
+                closeSettingsDialogButton.addEventListener("click", ()=>{
+                    settingsDialogPopup.close();
+                });
+
+                settingsDialogPopup.append(
+                    renameProjectButton,
+                    deleteAllCompletedTasksButton,
+                    closeSettingsDialogButton
+                );
+
                 projectCard.append(
                     projectHeadContainer,
                     taskListContainer,
-                    sortDialogPopup
+                    sortDialogPopup,
+                    settingsDialogPopup
                 );
                 contentArea.appendChild(projectCard);
             }
