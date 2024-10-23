@@ -1,4 +1,3 @@
-// TODO: connect settings popup buttons with their functions
 // This function will create an UI that will show all the tasks and the projects in the content area of the page
 
 import settingsIconImage from "../../img/more-vertical.svg";
@@ -165,6 +164,10 @@ export default function showProjectCardInContent() {
 
                 const deleteAllCompletedTasksButton = document.createElement("button");
                 deleteAllCompletedTasksButton.textContent = "Delete All Completed Tasks";
+                deleteAllCompletedTasksButton.addEventListener("click", ()=>{
+                    listDetailsManager.deleteAllCompletedTasks(project);
+                    ProjectObserver.notify();
+                });
 
                 const closeSettingsDialogButton = document.createElement("button");
                 closeSettingsDialogButton.textContent = "Cancel";
