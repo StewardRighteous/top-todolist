@@ -1,4 +1,5 @@
 // Singleton pattern that will create a list for overall app
+// TODO: Connect to Local Storage
 import {List, Project} from "../../models/barrel.js";
 
 let instance;
@@ -18,6 +19,9 @@ class ListStateManager{
 
     getList(){
         return list;
+    }
+    saveToLocal(){
+        localStorage.setItem("all-todos", JSON.stringify(list));
     }
 
 }

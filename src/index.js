@@ -13,6 +13,7 @@ import {
     showUserOptionsPopup,
     showStarredCard
 } from "./js/ui/barrel.js";
+import { listDetailsManager } from "./js/manager/barrel.js";
 
 loadPageWithDarkOrLightMode();
 showAllProjectsInNav();
@@ -21,6 +22,7 @@ showAddNewListDialogBox();
 showCreateNewTaskDialog();
 showHelpPopup();
 showUserOptionsPopup();
+listDetailsManager.subscribeStorageToChanges();
 
 // Show all projects when clicked on all Tasks
 const navigation = document.querySelector("nav");
