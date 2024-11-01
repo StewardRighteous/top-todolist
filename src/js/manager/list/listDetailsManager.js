@@ -1,17 +1,11 @@
 // Class that deals with parsing and adding data from the List to be used by others
 import List from "./listStateManager"
-import {ListObserver, TaskObserver, ProjectObserver} from "./../barrel.js";
+
 
 class createListDetailsManager {
     // Function that can be reused to get allProjects
     getAllProjects() {
         return List.getList().allProjects;
-    }
-
-    subscribeStorageToChanges(){
-        ListObserver.subscribe(List.saveToLocal);
-        TaskObserver.subscribe(List.saveToLocal);
-        ProjectObserver.subscribe(List.saveToLocal);
     }
 
     // returns the title of all projects in the list
